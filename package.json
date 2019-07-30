@@ -18,7 +18,6 @@
     "lint:js": "eslint --ext .ts --ext .tsx packages",
     "lint:styles": "stylelint './packages/**/*.tsx'",
     "lint:types": "tsc",
-    "lint:last-commit": "commitlint -f HEAD~1",
     "prettier": "prettier --write 'packages/**/*.{js,ts,tsx}'"
   },
   "devDependencies": {
