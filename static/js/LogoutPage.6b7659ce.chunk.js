@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{95:function(n,o,t){"use strict";t.r(o);var u=t(91),c=t(29),e=t(31),l={logout:t(14).d};o.default=Object(u.a)(e.f,Object(c.c)(null,l))(function(n){var o=n.logout,t=n.history;return o(),t.push("/"),null})}}]);
+//# sourceMappingURL=LogoutPage.6b7659ce.chunk.js.map

@@ -1,0 +1,19 @@
+{
+  "files": {
+    "DashboardPage.js": "/myzen/static/js/DashboardPage.5bb7378f.chunk.js",
+    "DashboardPage.js.map": "/myzen/static/js/DashboardPage.5bb7378f.chunk.js.map",
+    "LogoutPage.js": "/myzen/static/js/LogoutPage.6b7659ce.chunk.js",
+    "LogoutPage.js.map": "/myzen/static/js/LogoutPage.6b7659ce.chunk.js.map",
+    "NotFoundPage.js": "/myzen/static/js/NotFoundPage.35e08065.chunk.js",
+    "NotFoundPage.js.map": "/myzen/static/js/NotFoundPage.35e08065.chunk.js.map",
+    "main.js": "/myzen/static/js/main.2744aba4.chunk.js",
+    "main.js.map": "/myzen/static/js/main.2744aba4.chunk.js.map",
+    "runtime~main.js": "/myzen/static/js/runtime~main.ecfddc80.js",
+    "runtime~main.js.map": "/myzen/static/js/runtime~main.ecfddc80.js.map",
+    "static/js/5.272eb520.chunk.js": "/myzen/static/js/5.272eb520.chunk.js",
+    "static/js/5.272eb520.chunk.js.map": "/myzen/static/js/5.272eb520.chunk.js.map",
+    "index.html": "/myzen/index.html",
+    "precache-manifest.64a06fc4b49b25764f2401ea687c9c95.js": "/myzen/precache-manifest.64a06fc4b49b25764f2401ea687c9c95.js",
+    "service-worker.js": "/myzen/service-worker.js"
+  }
+}
