@@ -1,5 +1,6 @@
 {
   "hooks": {
-    "pre-commit": "lint-staged && yarn lint:js && yarn lint:styles && yarn lint:types && yarn lint:checkcommit"
+    "pre-commit": "lint-staged && yarn lint:js && yarn lint:styles && yarn lint:types",
+    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
   }
 }
