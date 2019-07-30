@@ -11,6 +11,4 @@ app.use(serveStatic('build'));
 app.use((req, res) => {
   return res.sendFile(path.join(`${__dirname}/../build/index.html`));
 });
-app.listen(port, () =>
-  console.log(`UncharTech Web is running on ${port} port`),
-);
+app.listen(port, () => console.log(`MyZen Web is running on ${port} port`));
