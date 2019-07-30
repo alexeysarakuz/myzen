@@ -12,7 +12,7 @@ const { theme, GlobalStyle } = getTheme('base');
 const App = () => (
   <ThemeProvider theme={theme}>
     <div>
-      <Helmet titleTemplate="UncharTech | %s" defaultTitle="UncharTech" />
+      <Helmet titleTemplate="MyZen | %s" defaultTitle="MyZen" />
       <GlobalStyle />
       <div>
         <ScrollToTop>{routes}</ScrollToTop>

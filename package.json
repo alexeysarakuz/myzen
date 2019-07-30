@@ -1,5 +1,5 @@
 {
-  "name": "@unchartech/market-intelligence-web",
+  "name": "myzen",
   "version": "0.1.0",
   "main": "src/index.js",
   "license": "UNLICENSED",
@@ -14,7 +14,7 @@
     "web:start:dev": "cd packages/web && yarn start:dev",
     "web:build": "cd packages/web && yarn build",
     "test": "cd packages/web && yarn test",
-    "lint": "yarn lint:js && yarn lint:styles && yarn lint:types && yarn lint:last-commit",
+    "lint": "yarn lint:js && yarn lint:styles && yarn lint:types",
     "lint:js": "eslint --ext .ts --ext .tsx packages",
     "lint:styles": "stylelint './packages/**/*.tsx'",
     "lint:types": "tsc",

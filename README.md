@@ -1,6 +1,6 @@
-# UncharTech Market Intelligence Web
+# Myzen
 
-UncharTech web application for Market Intelligence product.
+Myzen web application
 
 ## Run in development mode
 
