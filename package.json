@@ -10,6 +10,8 @@
     ]
   },
   "scripts": {
+    "predeploy": "yarn web:build",
+    "deploy": "gh-pages -d packages/web/build",
     "web:start": "cd packages/web && yarn start",
     "web:start:dev": "cd packages/web && yarn start:dev",
     "web:build": "cd packages/web && yarn build",

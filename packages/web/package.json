@@ -8,10 +8,12 @@
     "build": "NODE_PATH=src SKIP_PREFLIGHT_CHECK=true react-scripts build",
     "test": "NODE_PATH=src SKIP_PREFLIGHT_CHECK=true react-scripts test"
   },
+  "homepage": "https://alexeysarakuz.github.io/myzen/",
   "dependencies": {
     "axios": "^0.19.0",
     "connected-react-router": "^6.5.0",
     "express": "^4.17.1",
+    "gh-pages": "^2.0.1",
     "history": "^4.9.0",
     "ramda": "^0.26.1",
     "react": "^16.8.6",
