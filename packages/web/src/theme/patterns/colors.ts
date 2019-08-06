@@ -3,6 +3,15 @@ import * as R from 'ramda';
 export const colorScheme = {
   white: { value: '#FFF', name: 'White' },
   black: { value: '#000', name: 'Black' },
+  primaryBlue: { value: '#3E4FA1', name: 'PrimaryBlue' },
+  primaryDarkGray: { value: '#212121', name: 'PrimaryDarkGray' },
+  primaryLightGray: { value: '#A0A0A0', name: 'PrimaryLightGray' },
+  primaryGreen: { value: '#67CC92', name: 'PrimaryGreen' },
+  loginPageInputBorder: { value: '#C9C9C9', name: 'LoginPageInputBorder' },
+  loginPageInputPlaceholder: {
+    value: '#BDBDBD',
+    name: 'LoginPageInputPlaceholder',
+  },
 };
 
 export const getColor = (colorKey: string) =>
