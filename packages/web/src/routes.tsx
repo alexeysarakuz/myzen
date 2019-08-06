@@ -12,6 +12,14 @@ const DashboardPage = Loadable({
   loading: () => <Preloader />,
 });
 
+const RegisterPage = Loadable({
+  loader: () =>
+    import(
+      './modules/auth/pages/RegisterPage' /* webpackChunkName: "LogoutPage" */
+    ),
+  loading: () => <Preloader />,
+});
+
 const LogoutPage = Loadable({
   loader: () =>
     import(
@@ -33,6 +41,7 @@ export default (
     <Switch>
       <Route exact path="/" component={DashboardPage} />
       <Route exact path="/logout" component={LogoutPage} />
+      <Route exact path="/register" component={RegisterPage} />
       {/* Catch all routes */}
       <Route component={NotFoundPage} />
     </Switch>
