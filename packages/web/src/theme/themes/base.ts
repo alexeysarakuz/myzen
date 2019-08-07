@@ -34,6 +34,10 @@ export const GlobalStyle = createGlobalStyle`
   .ant-table-expanded-row {
     background-color: #f5f7fb !important;
   }
+
+  * {
+    font-family: "Open Sans", serif !important;
+  }
 `;
 
 export const theme = {

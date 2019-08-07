@@ -3,14 +3,20 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import TextField from './TextField';
 
-const RegisterPageForm = () => {
+interface RegisterPageFormProps {
+  onSubmit: Function;
+}
+
+const RegisterPageForm = ({ onSubmit }: RegisterPageFormProps) => {
   const [username, changeUsername] = useState('');
   const [email, changeEmail] = useState('');
   const [password, changePassword] = useState('');
 
   const [emailIsChecked, changeEmailToggle] = useState(true);
   return (
-    <FormWrapper>
+    <FormWrapper
+      onSubmit={e => onSubmit(e, username, email, password, emailIsChecked)}
+    >
       <TextField
         type="text"
         value={username}

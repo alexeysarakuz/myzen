@@ -6,7 +6,7 @@ export const colorScheme = {
   primaryBlue: { value: '#3E4FA1', name: 'PrimaryBlue' },
   primaryDarkGray: { value: '#212121', name: 'PrimaryDarkGray' },
   primaryLightGray: { value: '#A0A0A0', name: 'PrimaryLightGray' },
-  primaryGreen: { value: '#67CC92', name: 'PrimaryGreen' },
+  primaryGreen: { value: '#5EC695', name: 'PrimaryGreen' },
   loginPageInputBorder: { value: '#C9C9C9', name: 'LoginPageInputBorder' },
   loginPageInputPlaceholder: {
     value: '#BDBDBD',

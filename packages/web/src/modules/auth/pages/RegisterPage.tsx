@@ -2,22 +2,38 @@ import RegisterPageForm from '../components/RegisterPageForm';
 import React from 'react';
 import styled from 'styled-components';
 
-const RegisterPage = () => (
-  <PageWrapper>
-    <LeftCol>
-      <LeftWrapper>
-        <PageTitle>Getting Started</PageTitle>
-        <PageAlternative>Already have an account?</PageAlternative>
-        <RegisterPageForm />
-        <RegisterRules>
-          By singing up, you agree to MyZen <b>Terms of Conditions</b> and {}
-          <b>Privacy Policy</b>
-        </RegisterRules>
-      </LeftWrapper>
-    </LeftCol>
-    <RightCol></RightCol>
-  </PageWrapper>
-);
+const RegisterPage = () => {
+  const registerUser = (
+    e: any,
+    username: string,
+    email: string,
+    password: string,
+    emailIsChecked: boolean,
+  ) => {
+    e.preventDefault();
+    console.log('username', username);
+    console.log('email', email);
+    console.log('password', password);
+    console.log('emailIsChecked', emailIsChecked);
+  };
+
+  return (
+    <PageWrapper>
+      <LeftCol>
+        <LeftWrapper>
+          <PageTitle>Getting Started</PageTitle>
+          <PageAlternative>Already have an account?</PageAlternative>
+          <RegisterPageForm onSubmit={registerUser} />
+          <RegisterRules>
+            By singing up, you agree to MyZen <b>Terms of Conditions</b> and {}
+            <b>Privacy Policy</b>
+          </RegisterRules>
+        </LeftWrapper>
+      </LeftCol>
+      <RightCol></RightCol>
+    </PageWrapper>
+  );
+};
 
 const PageWrapper = styled.div`
   display: flex;
@@ -25,7 +41,7 @@ const PageWrapper = styled.div`
 `;
 
 const PageTitle = styled.h2`
-  font-size: 40px;
+  font-size: 36px;
   font-weight: bold;
   color: ${props => props.theme.colors.primaryBlue};
   margin-bottom: 12px;
@@ -62,7 +78,7 @@ const LeftWrapper = styled.div`
 
 const RegisterRules = styled.p`
   margin-top: 30px;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 20px;
   color: ${props => props.theme.colors.primaryLightGray};
 
