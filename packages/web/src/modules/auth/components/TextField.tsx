@@ -9,15 +9,30 @@ interface TextFieldProps {
 }
 
 const TextField = ({ type, value, placeholder, onChange }: TextFieldProps) => (
-  <div>
+  <InputContainer>
     <InputStyled
       type={type}
       value={value}
       placeholder={placeholder}
       onChange={({ target: { value } }) => onChange(value)}
     />
-  </div>
+    <InputLine />
+  </InputContainer>
 );
+
+const InputContainer = styled.div`
+  position: relative;
+`;
+
+const InputLine = styled.div`
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: ${props => props.theme.colors.primaryBlue};
+  transition: 0.3s;
+`;
 
 const InputStyled = styled.input`
   width: 100%;
@@ -31,6 +46,14 @@ const InputStyled = styled.input`
 
   &::placeholder {
     color: ${props => props.theme.colors.loginPageInputPlaceholder};
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus + ${InputLine} {
+    width: 100%;
   }
 `;
 

@@ -44,7 +44,7 @@ const PageTitle = styled.h2`
   font-size: 36px;
   font-weight: bold;
   color: ${props => props.theme.colors.primaryBlue};
-  margin-bottom: 12px;
+  margin-bottom: 22px;
 `;
 
 const PageAlternative = styled.a`
