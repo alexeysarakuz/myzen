@@ -52,7 +52,7 @@ const RegisterPageForm = ({ onSubmit }: RegisterPageFormProps) => {
 };
 
 const FormWrapper = styled.form`
-  margin-top: 27px;
+  margin-top: 28px;
 `;
 
 const AuthCheckboxes = styled.div`
