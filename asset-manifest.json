@@ -1,19 +1,19 @@
 {
   "files": {
-    "LogoutPage.js": "/myzen/static/js/LogoutPage.a3ebba6c.chunk.js",
-    "LogoutPage.js.map": "/myzen/static/js/LogoutPage.a3ebba6c.chunk.js.map",
-    "MainPage.js": "/myzen/static/js/MainPage.82b59b76.chunk.js",
-    "MainPage.js.map": "/myzen/static/js/MainPage.82b59b76.chunk.js.map",
-    "NotFoundPage.js": "/myzen/static/js/NotFoundPage.ea40da10.chunk.js",
-    "NotFoundPage.js.map": "/myzen/static/js/NotFoundPage.ea40da10.chunk.js.map",
-    "main.js": "/myzen/static/js/main.c5005078.chunk.js",
-    "main.js.map": "/myzen/static/js/main.c5005078.chunk.js.map",
-    "runtime~main.js": "/myzen/static/js/runtime~main.f1dd0057.js",
-    "runtime~main.js.map": "/myzen/static/js/runtime~main.f1dd0057.js.map",
-    "static/js/5.eb951178.chunk.js": "/myzen/static/js/5.eb951178.chunk.js",
-    "static/js/5.eb951178.chunk.js.map": "/myzen/static/js/5.eb951178.chunk.js.map",
-    "index.html": "/myzen/index.html",
-    "precache-manifest.84a2dcd7e1fdfafc4aa906c569873e19.js": "/myzen/precache-manifest.84a2dcd7e1fdfafc4aa906c569873e19.js",
-    "service-worker.js": "/myzen/service-worker.js"
+    "LogoutPage.js": "/static/js/LogoutPage.a3ebba6c.chunk.js",
+    "LogoutPage.js.map": "/static/js/LogoutPage.a3ebba6c.chunk.js.map",
+    "MainPage.js": "/static/js/MainPage.82b59b76.chunk.js",
+    "MainPage.js.map": "/static/js/MainPage.82b59b76.chunk.js.map",
+    "NotFoundPage.js": "/static/js/NotFoundPage.ea40da10.chunk.js",
+    "NotFoundPage.js.map": "/static/js/NotFoundPage.ea40da10.chunk.js.map",
+    "main.js": "/static/js/main.620fba29.chunk.js",
+    "main.js.map": "/static/js/main.620fba29.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.2e9a934f.js",
+    "runtime~main.js.map": "/static/js/runtime~main.2e9a934f.js.map",
+    "static/js/5.a21f895c.chunk.js": "/static/js/5.a21f895c.chunk.js",
+    "static/js/5.a21f895c.chunk.js.map": "/static/js/5.a21f895c.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.3d6c50e572b9ebe75cba080cdf28b819.js": "/precache-manifest.3d6c50e572b9ebe75cba080cdf28b819.js",
+    "service-worker.js": "/service-worker.js"
   }
 }
