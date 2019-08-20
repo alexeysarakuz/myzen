@@ -1,14 +1,12 @@
-import React from 'react';
 import Loadable from 'react-loadable';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Preloader from 'components/Preloader/Preloader';
 
-const DashboardPage = Loadable({
+const MainPage = Loadable({
   loader: () =>
-    import(
-      './modules/dashboard/pages/DashboardPage' /* webpackChunkName: "DashboardPage" */
-    ),
+    import('./modules/main/pages/MainPage' /* webpackChunkName: "MainPage" */),
   loading: () => <Preloader />,
 });
 
@@ -39,7 +37,7 @@ const NotFoundPage = Loadable({
 export default (
   <div>
     <Switch>
-      <Route exact path="/" component={DashboardPage} />
+      <Route exact path="/" component={MainPage} />
       <Route exact path="/logout" component={LogoutPage} />
       <Route exact path="/register" component={RegisterPage} />
       {/* Catch all routes */}

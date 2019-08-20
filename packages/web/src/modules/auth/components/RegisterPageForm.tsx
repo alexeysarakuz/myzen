@@ -1,4 +1,5 @@
 import AuthCheckbox from './CustomCheckbox';
+import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import TextField from './TextField';
@@ -19,20 +20,23 @@ const RegisterPageForm = ({ onSubmit }: RegisterPageFormProps) => {
     >
       <TextField
         type="text"
-        value={username}
         placeholder="Name"
+        icon="name.svg"
+        value={username}
         onChange={changeUsername}
       />
       <TextField
         type="email"
-        value={email}
         placeholder="Email"
+        icon="email.svg"
+        value={email}
         onChange={changeEmail}
       />
       <TextField
         type="password"
+        placeholder="Password (6-12 characters)"
+        icon="password.svg"
         value={password}
-        placeholder="Password"
         onChange={changePassword}
       />
       <AuthCheckboxes>
@@ -45,7 +49,7 @@ const RegisterPageForm = ({ onSubmit }: RegisterPageFormProps) => {
       </AuthCheckboxes>
       <ButtonsRow>
         <ButtonSubmit>Sign Up</ButtonSubmit>
-        <ButtonSkip>Skip</ButtonSkip>
+        <ButtonSkip to="/dashboard/">Skip</ButtonSkip>
       </ButtonsRow>
     </FormWrapper>
   );
@@ -75,7 +79,7 @@ const ButtonSubmit = styled.button`
   cursor: pointer;
 `;
 
-const ButtonSkip = styled.a`
+const ButtonSkip = styled(Link)`
   color: ${props => props.theme.colors.primaryBlue};
   margin-left: 44px;
   background-color: ${props => props.theme.colors.white};
