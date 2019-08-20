@@ -1,9 +1,9 @@
-import { routerMiddleware } from 'connected-react-router';
-import { createBrowserHistory, createMemoryHistory } from 'history';
 import { applyMiddleware, compose, createStore } from 'redux';
-import { persistStore } from 'redux-persist';
+import { createBrowserHistory, createMemoryHistory } from 'history';
 import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';
+import { persistStore } from 'redux-persist';
+import { routerMiddleware } from 'connected-react-router';
 
 import loggerMiddleware from './middlewares/loggerMiddleware';
 import rootReducer from './rootReducer';

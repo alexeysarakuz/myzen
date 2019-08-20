@@ -3,12 +3,19 @@ import styled from 'styled-components';
 
 interface TextFieldProps {
   type: string;
-  value: string;
   placeholder: string;
+  icon: string;
+  value: string;
   onChange: Function;
 }
 
-const TextField = ({ type, value, placeholder, onChange }: TextFieldProps) => (
+const TextField = ({
+  type,
+  placeholder,
+  icon,
+  value,
+  onChange,
+}: TextFieldProps) => (
   <InputContainer>
     <InputStyled
       type={type}
@@ -17,11 +24,13 @@ const TextField = ({ type, value, placeholder, onChange }: TextFieldProps) => (
       onChange={({ target: { value } }) => onChange(value)}
     />
     <InputLine />
+    <InputIcon src={`/images/login-page/${icon}`} alt="txt" />
   </InputContainer>
 );
 
 const InputContainer = styled.div`
   position: relative;
+  display: flex;
 `;
 
 const InputLine = styled.div`
@@ -55,6 +64,13 @@ const InputStyled = styled.input`
   &:focus + ${InputLine} {
     width: 100%;
   }
+`;
+
+const InputIcon = styled.img`
+  position: absolute;
+  width: 15px;
+  right: 0;
+  bottom: 10px;
 `;
 
 export default TextField;
