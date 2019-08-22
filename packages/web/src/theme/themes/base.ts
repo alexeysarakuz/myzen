@@ -35,8 +35,46 @@ export const GlobalStyle = createGlobalStyle`
     background-color: #f5f7fb !important;
   }
 
-  * {
-    font-family: "Open Sans", serif !important;
+  body {
+    font-family: "Open Sans", serif;
+  }
+
+  @font-face {
+    font-family: 'icomoon';
+    src: url('/fonts/icomoon/icomoon.eot');
+    src:
+      url('/fonts/icomoon/icomoon.eot') format('embedded-opentype'),
+      url('/fonts/icomoon/icomoon.ttf') format('truetype'),
+      url('/fonts/icomoon/icomoon.woff') format('woff'),
+      url('/fonts/icomoon/icomoon.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  [class^="icon-"],
+  [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: "icomoon" !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .icon-user::before {
+    content: '\\e900';
+  }
+
+  .icon-lock_outline::before {
+    content: "\\e899";
+  }
+
+  .icon-mail::before {
+    content: "\\e901";
   }
 `;
 

@@ -4,16 +4,16 @@ import styled from 'styled-components';
 interface TextFieldProps {
   type: string;
   placeholder: string;
-  icon: string;
   value: string;
+  children: JSX.Element[] | JSX.Element;
   onChange: Function;
 }
 
 const TextField = ({
   type,
   placeholder,
-  icon,
   value,
+  children,
   onChange,
 }: TextFieldProps) => (
   <InputContainer>
@@ -24,7 +24,7 @@ const TextField = ({
       onChange={({ target: { value } }) => onChange(value)}
     />
     <InputLine />
-    <InputIcon src={`/images/login-page/${icon}`} alt="txt" />
+    <InputIcon>{children}</InputIcon>
   </InputContainer>
 );
 
@@ -43,11 +43,20 @@ const InputLine = styled.div`
   transition: 0.3s;
 `;
 
+const InputIcon = styled.div`
+  position: absolute;
+  width: 15px;
+  right: 3px;
+  bottom: 8px;
+  color: ${props => props.theme.colors.loginPageInputPlaceholder};
+  transition: 0.5s;
+  font-size: 18px;
+`;
+
 const InputStyled = styled.input`
   width: 100%;
   margin-top: 26px;
-  padding-top: 10px;
-  padding-bottom: 8px;
+  padding: 10px 25px 8px 2px;
   font-size: 14px;
   color: ${props => props.theme.colors.primaryDarkGray};
   border: none;
@@ -64,13 +73,10 @@ const InputStyled = styled.input`
   &:focus + ${InputLine} {
     width: 100%;
   }
-`;
 
-const InputIcon = styled.img`
-  position: absolute;
-  width: 15px;
-  right: 0;
-  bottom: 10px;
+  &:focus + ${InputLine} + ${InputIcon} {
+    color: ${props => props.theme.colors.primaryBlue};
+  }
 `;
 
 export default TextField;
