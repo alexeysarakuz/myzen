@@ -21,24 +21,27 @@ const RegisterPageForm = ({ onSubmit }: RegisterPageFormProps) => {
       <TextField
         type="text"
         placeholder="Name"
-        icon="name.svg"
         value={username}
         onChange={changeUsername}
-      />
+      >
+        <span className="icon-user" />
+      </TextField>
       <TextField
         type="email"
         placeholder="Email"
-        icon="email.svg"
         value={email}
         onChange={changeEmail}
-      />
+      >
+        <span className="icon-mail" />
+      </TextField>
       <TextField
         type="password"
         placeholder="Password (6-12 characters)"
-        icon="password.svg"
         value={password}
         onChange={changePassword}
-      />
+      >
+        <span className="icon-lock_outline" />
+      </TextField>
       <AuthCheckboxes>
         <AuthCheckbox
           name="enable_email"
@@ -61,6 +64,11 @@ const FormWrapper = styled.form`
 
 const AuthCheckboxes = styled.div`
   margin-top: 30px;
+  transition: color 0.3s;
+
+  &:hover {
+    color: ${props => props.theme.colors.primaryBlue};
+  }
 `;
 
 const ButtonsRow = styled.div`
@@ -77,6 +85,17 @@ const ButtonSubmit = styled.button`
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    background-color: ${props => props.theme.colors.primaryBlue};
+  }
+
+  &:focus {
+    outline: none;
+    background-color: ${props => props.theme.colors.primaryBlue};
+    box-shadow: 0 0 10px ${props => props.theme.colors.primaryBlue};
+  }
 `;
 
 const ButtonSkip = styled(Link)`

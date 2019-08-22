@@ -13,8 +13,8 @@ const FeedbackSlider = ({ data }: SliderProps) => (
         <Content>
           <ProfileImage src={item.image} alt={`Photo of ${item.position}`} />
           <Name>{item.name}</Name>
-          <Description>{item.description}</Description>
-          <Description>{item.description}</Description>
+          <Description>{`"${item.description}"`}</Description>
+          <Position>Position: {item.position}</Position>
         </Content>
       </Item>
     ))}
@@ -34,14 +34,22 @@ const Item = styled.div`
   box-sizing: border-box;
   margin: 0 auto;
   padding: 60px 0;
-  border-radius: 6px;
+  border-radius: 20px;
   background-image: url('/images/login-page/abstractr-background.png');
   background-size: cover;
+
+  @media (min-width: 1600px) {
+    width: 380px;
+  }
 `;
 
 const Content = styled.div`
-  max-width: 70%;
+  max-width: 75%;
   margin: 0 auto;
+
+  @media (min-width: 1600px) {
+    max-width: 65%;
+  }
 `;
 
 const ProfileImage = styled.img`
@@ -54,13 +62,30 @@ const ProfileImage = styled.img`
 
 const Name = styled.h2`
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 600;
   color: ${props => props.theme.colors.primaryBlue};
-  margin-bottom: 20px;
 `;
 
 const Description = styled.p`
+  font-family: 'Merriweather', serif;
   font-size: 14px;
+  line-height: 1.65;
+  font-weight: 100;
+  color: ${props => props.theme.colors.primaryDarkGray};
+  margin-top: 20px;
+  margin-bottom: 10px;
+
+  @media (min-width: 1600px) {
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+`;
+
+const Position = styled.h4`
+  color: ${props => props.theme.colors.primaryBlue};
+  font-size: 16px;
+  font-weight: 600;
   line-height: 1.6;
 `;
+
 export default FeedbackSlider;

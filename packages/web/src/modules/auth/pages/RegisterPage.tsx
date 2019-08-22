@@ -138,11 +138,15 @@ const LeftCol = styled.div`
   display: flex;
   justify-content: center;
 
-  @media (max-width: 800px) {
+  @media (max-width: 960px) {
     width: 100%;
     min-height: 100vh;
     box-sizing: border-box;
     align-items: center;
+  }
+
+  @media (min-width: 1750px) {
+    width: 60%;
   }
 `;
 
@@ -156,8 +160,12 @@ const RightCol = styled.div`
   min-height: 520px;
   background-color: ${props => props.theme.colors.primaryBlue};
 
-  @media (max-width: 800px) {
+  @media (max-width: 960px) {
     display: none;
+  }
+
+  @media (min-width: 1750px) {
+    width: 40%;
   }
 `;
 
@@ -198,13 +206,21 @@ const YellowSquare = styled.img`
   right: 0;
   top: 30px;
   max-width: 60%;
+
+  @media (min-width: 1600px) {
+    max-width: 45%;
+  }
 `;
 
 const TurquoiseSquare = styled.img`
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: 20px;
   max-width: 60%;
+
+  @media (min-width: 1600px) {
+    max-width: 45%;
+  }
 `;
 
 const AbstractDotTop = styled.div`
@@ -238,9 +254,9 @@ RegisterPage.defaultProps = {
       id: 0,
       image: '/images/login-page/founder.png',
       name: 'Alex Sarakuz',
-      position: 'Founder, a pupil of the 10-th form',
+      position: 'Founder',
       description:
-        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi atque voluptatum harum quidem dignissimos, deserunt facere iusto recusandae alias nostrum repellendus natus dicta vel soluta est obcaecati.',
+        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi atque voluptatum harum quidem dignissimos, deserunt facere iusto recusandae alias nostrum repellendus natus dicta vel soluta est obcaecati. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi atque voluptatum harum quidem dignissimos, deserunt facere iusto recusandae alias nostrum repellendus natus dicta vel soluta est obcaecati.',
     },
   ],
 };

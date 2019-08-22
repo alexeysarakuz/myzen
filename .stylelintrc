@@ -8,6 +8,9 @@
     "comment-empty-line-before": null,
     "declaration-colon-space-before": null,
     "declaration-empty-line-before": null,
-    "number-leading-zero": null
+    "number-leading-zero": null,
+    "font-family-no-missing-generic-family-keyword": null,
+    "selector-type-no-unknown": null,
+    "selector-type-case": null,
   }
 }
