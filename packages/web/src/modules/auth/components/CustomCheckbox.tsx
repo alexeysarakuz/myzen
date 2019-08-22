@@ -36,17 +36,6 @@ const CheckboxWrapper = styled.div`
   }
 `;
 
-const StyledInput = styled.input`
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  top: 0;
-
-  &:checked + label::after {
-    transform: translate(-50%, -50%) scale(1);
-  }
-`;
-
 const StyledCheckbox = styled.label`
   position: relative;
   width: 14px;
@@ -68,6 +57,29 @@ const StyledCheckbox = styled.label`
     background-image: url('/images/login-page/tick.svg');
     background-size: cover;
     transition: transform 0.15s;
+  }
+`;
+
+const StyledInput = styled.input`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  top: 0;
+
+  &:checked + label::after {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  &:focus {
+    outline: none;
+
+    & + ${StyledCheckbox} {
+      box-shadow: 0 0 5px ${props => props.theme.colors.primaryLightBlue};
+    }
+
+    & + label + label {
+      color: ${props => props.theme.colors.primaryBlue};
+    }
   }
 `;
 
