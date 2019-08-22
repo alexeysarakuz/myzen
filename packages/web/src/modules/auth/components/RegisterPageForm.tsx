@@ -12,8 +12,8 @@ const RegisterPageForm = ({ onSubmit }: RegisterPageFormProps) => {
   const [username, changeUsername] = useState('');
   const [email, changeEmail] = useState('');
   const [password, changePassword] = useState('');
-
   const [emailIsChecked, changeEmailToggle] = useState(true);
+
   return (
     <FormWrapper
       onSubmit={e => onSubmit(e, username, email, password, emailIsChecked)}
@@ -103,6 +103,32 @@ const ButtonSkip = styled(Link)`
   margin-left: 44px;
   background-color: ${props => props.theme.colors.white};
   cursor: pointer;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: ${props => props.theme.colors.primaryBlue};
+    transition: 0.2s;
+  }
+
+  &:hover {
+    &::after {
+      width: 100%;
+    }
+  }
+
+  &:focus {
+    outline: none;
+
+    &::after {
+      width: 100%;
+    }
+  }
 `;
 
 export default RegisterPageForm;

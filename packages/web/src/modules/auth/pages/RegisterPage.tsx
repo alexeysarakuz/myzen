@@ -5,6 +5,7 @@ import Logo from 'components/Logo/Logo';
 import React from 'react';
 import RegisterPageForm from '../components/RegisterPageForm';
 import styled from 'styled-components';
+import { validateField } from '../auth.helpers';
 
 const BlueAbstract = () => (
   <svg
@@ -53,9 +54,9 @@ const RegisterPage = ({ feedbackData }: RegisterPageProps) => {
     emailIsChecked: boolean,
   ) => {
     e.preventDefault();
-    console.log('username', username);
-    console.log('email', email);
-    console.log('password', password);
+    validateField('name', username);
+    validateField('email', email);
+    validateField('password', password);
     console.log('emailIsChecked', emailIsChecked);
   };
 
@@ -122,6 +123,7 @@ const PageTitle = styled.h2`
 const PageAlternative = styled(Link)`
   color: ${props => props.theme.colors.primaryDarkGray};
   position: relative;
+  transition: 0.5s;
 
   &::after {
     content: '';
@@ -130,6 +132,24 @@ const PageAlternative = styled(Link)`
     left: 0;
     width: 100%;
     border-bottom: 1px solid ${props => props.theme.colors.primaryDarkGray};
+    transition: 0.5s;
+  }
+
+  &:hover {
+    color: ${props => props.theme.colors.primaryBlue};
+
+    &::after {
+      border-bottom-color: ${props => props.theme.colors.primaryBlue};
+    }
+  }
+
+  &:focus {
+    outline: none;
+    color: ${props => props.theme.colors.primaryBlue};
+
+    &::after {
+      border-bottom-color: ${props => props.theme.colors.primaryBlue};
+    }
   }
 `;
 
