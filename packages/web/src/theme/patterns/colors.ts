@@ -16,6 +16,7 @@ export const colorScheme = {
     value: '#BDBDBD',
     name: 'LoginPageInputPlaceholder',
   },
+  redErrorColor: { value: '#F3753E', name: 'RedErrorColor' },
 };
 
 export const getColor = (colorKey: string) =>
