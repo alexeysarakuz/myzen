@@ -5,10 +5,15 @@ import styled from 'styled-components';
 import TextField from './TextField';
 
 interface RegisterPageFormProps {
+  errors: {
+    name: string[];
+    email: string[];
+    password: string[];
+  };
   onSubmit: Function;
 }
 
-const RegisterPageForm = ({ onSubmit }: RegisterPageFormProps) => {
+const RegisterPageForm = ({ errors, onSubmit }: RegisterPageFormProps) => {
   const [username, changeUsername] = useState('');
   const [email, changeEmail] = useState('');
   const [password, changePassword] = useState('');
@@ -22,6 +27,7 @@ const RegisterPageForm = ({ onSubmit }: RegisterPageFormProps) => {
         type="text"
         placeholder="Name"
         value={username}
+        error={errors.name[0]}
         onChange={changeUsername}
       >
         <span className="icon-user" />
@@ -30,14 +36,16 @@ const RegisterPageForm = ({ onSubmit }: RegisterPageFormProps) => {
         type="email"
         placeholder="Email"
         value={email}
+        error={errors.email[0]}
         onChange={changeEmail}
       >
         <span className="icon-mail" />
       </TextField>
       <TextField
         type="password"
-        placeholder="Password (6-12 characters)"
+        placeholder="Password (6-20 characters)"
         value={password}
+        error={errors.password[0]}
         onChange={changePassword}
       >
         <span className="icon-lock_outline" />
@@ -95,6 +103,10 @@ const ButtonSubmit = styled.button`
     outline: none;
     background-color: ${props => props.theme.colors.primaryBlue};
     box-shadow: 0 0 10px ${props => props.theme.colors.primaryBlue};
+  }
+
+  &:active {
+    box-shadow: none;
   }
 `;
 

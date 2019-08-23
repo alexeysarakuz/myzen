@@ -2,7 +2,7 @@ import { FeedbackItem } from '../auth.models';
 import FeedbackSlider from '../components/FeedbackSlider';
 import { Link } from 'react-router-dom';
 import Logo from 'components/Logo/Logo';
-import React from 'react';
+import React, { useState } from 'react';
 import RegisterPageForm from '../components/RegisterPageForm';
 import styled from 'styled-components';
 import { validateField } from '../auth.helpers';
@@ -46,6 +46,12 @@ interface RegisterPageProps {
 }
 
 const RegisterPage = ({ feedbackData }: RegisterPageProps) => {
+  const [errors, setErrors] = useState({
+    name: [''],
+    email: [''],
+    password: [''],
+  });
+
   const registerUser = (
     e: any,
     username: string,
@@ -54,9 +60,16 @@ const RegisterPage = ({ feedbackData }: RegisterPageProps) => {
     emailIsChecked: boolean,
   ) => {
     e.preventDefault();
-    validateField('name', username);
-    validateField('email', email);
-    validateField('password', password);
+    let allErrors = {
+      name: [''],
+      email: [''],
+      password: [''],
+    };
+    allErrors.name = validateField('name', username);
+    allErrors.email = validateField('email', email);
+    allErrors.password = validateField('password', password);
+
+    setErrors(allErrors);
     console.log('emailIsChecked', emailIsChecked);
   };
 
@@ -68,7 +81,7 @@ const RegisterPage = ({ feedbackData }: RegisterPageProps) => {
           <PageAlternative to="/login">
             Already have an account?
           </PageAlternative>
-          <RegisterPageForm onSubmit={registerUser} />
+          <RegisterPageForm errors={errors} onSubmit={registerUser} />
           <RegisterRules>
             By singing up, you agree to MyZen{' '}
             <Link to="/terms-of-conditions">Terms of Conditions</Link> and{' '}
