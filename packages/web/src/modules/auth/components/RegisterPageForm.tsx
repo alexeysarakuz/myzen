@@ -101,8 +101,6 @@ const ButtonSubmit = styled.button`
 
   &:focus {
     outline: none;
-    background-color: ${props => props.theme.colors.primaryBlue};
-    box-shadow: 0 0 10px ${props => props.theme.colors.primaryBlue};
   }
 
   &:active {

@@ -1,37 +1,49 @@
-import { Link } from 'react-router-dom';
+import Logo from 'components/Logo/Logo';
+import { NavLink } from 'react-router-dom';
 import React from 'react';
 import styled from 'styled-components';
 
 const NavHeader = () => (
   <Wrapper>
     <NavCol>
-      <Logo>myzen.</Logo>
+      <Logo />
       <List>
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
-        <li>Item 4</li>
-        <li>Item 5</li>
+        <ListItem>
+          <ListLink to="/" activeClassName="active">
+            Home
+          </ListLink>
+        </ListItem>
+        <ListItem>
+          <ListLink to="/recruit">Recruit</ListLink>
+        </ListItem>
+        <ListItem>
+          <ListLink to="/find-a-work">Find a work</ListLink>
+        </ListItem>
+        <ListItem>
+          <ListLink to="/about">About</ListLink>
+        </ListItem>
       </List>
     </NavCol>
     <NavCol>
       <Auth>
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
-        <li>
-          <Link to="/register">Sign up</Link>
-        </li>
+        <AuthItem>
+          <AuthLink to="/login">Login</AuthLink>
+        </AuthItem>
+        <AuthItem>
+          <AuthLink to="/register">Sign up</AuthLink>
+        </AuthItem>
       </Auth>
     </NavCol>
   </Wrapper>
 );
 
 const Wrapper = styled.div`
+  position: relative;
+  z-index: 5;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 10px;
+  padding-top: 20px;
   color: ${props => props.theme.colors.white};
 `;
 
@@ -40,18 +52,57 @@ const NavCol = styled.div`
   align-items: center;
 `;
 
-const Logo = styled.h1`
-  font-size: 30px;
-  font-weight: bold;
-  margin-right: 10px;
-`;
-
 const List = styled.ul`
   display: flex;
+  margin-left: 90px;
+`;
+
+const ListItem = styled.li`
+  margin-right: 30px;
+  font-size: 14px;
+  font-weight: 100;
+`;
+
+const ListLink = styled(NavLink)`
+  color: ${props => props.theme.colors.white};
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    width: 0;
+    background-color: ${props => props.theme.colors.white};
+    transition: width 0.2s;
+  }
+
+  &:hover {
+    &::after {
+      width: 100%;
+    }
+  }
+
+  &.active {
+    &::after {
+      width: 100%;
+    }
+  }
 `;
 
 const Auth = styled.ul`
   display: flex;
+`;
+
+const AuthItem = styled.li`
+  margin-left: 20px;
+  color: ${props => props.theme.colors.darkYellow};
+  font-size: 14px;
+`;
+
+const AuthLink = styled(NavLink)`
+  color: ${props => props.theme.colors.black};
 `;
 
 export default NavHeader;
