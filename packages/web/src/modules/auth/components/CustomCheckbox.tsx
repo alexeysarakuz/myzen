@@ -69,18 +69,6 @@ const StyledInput = styled.input`
   &:checked + label::after {
     transform: translate(-50%, -50%) scale(1);
   }
-
-  &:focus {
-    outline: none;
-
-    & + ${StyledCheckbox} {
-      box-shadow: 0 0 5px ${props => props.theme.colors.primaryLightBlue};
-    }
-
-    & + label + label {
-      color: ${props => props.theme.colors.primaryBlue};
-    }
-  }
 `;
 
 export default CustomCheckbox;
