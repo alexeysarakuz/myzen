@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cf1f7f3a0a861125d15077754887f5be",
+    "revision": "6d3c0513caffb5b23c8654f4ee485fd4",
     "url": "/myzen/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/myzen/static/js/LogoutPage.9713e88b.chunk.js"
   },
   {
-    "revision": "cd762b40c92a979156fb",
-    "url": "/myzen/static/js/MainPage.58066f96.chunk.js"
+    "revision": "744799e0f60a6b9fc20a",
+    "url": "/myzen/static/js/MainPage.e37211ed.chunk.js"
   },
   {
     "revision": "1df756b5dda90d4011ad",
@@ -24,7 +24,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/myzen/static/js/main.75a26d81.chunk.js"
   },
   {
-    "revision": "c895525d3ef12337ac85",
-    "url": "/myzen/static/js/runtime~main.9c351b16.js"
+    "revision": "6def5f3daab100b9cc18",
+    "url": "/myzen/static/js/runtime~main.b6860c9e.js"
   }
 ]);
