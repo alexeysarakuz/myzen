@@ -27,6 +27,8 @@ export const colorScheme = {
   cyan: { value: '#366DF9', name: 'Cyan' },
   lightRed: { value: '#FFCBC4', name: 'LightRed' },
   darkRed: { value: '#FF6650', name: 'DarkRed' },
+  lightGrey: { value: '#F9F9F9', name: 'LightGrey' },
+  darkGrey: { value: '#939393', name: 'DarkGrey' },
 };
 
 export const getColor = (colorKey: string) =>

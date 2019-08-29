@@ -2,18 +2,21 @@ import Container from 'components/Grid/Container';
 import NavHeader from 'components/NavHeader/NavHeader';
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const MainPage = () => (
   <Wrapper>
     <Container>
       <NavHeader />
       <MainContent>
-        <Title>Cloud-based VoIP provider</Title>
+        <Title>You hate routine, right?</Title>
         <Paragraph>
-          Our cloud based hosted phone system is simple and flexible with
-          powerful call-management features
+          Lorem ipsum dolor sit, amet cotetur adipisicing elit. Beatae illum
+          quidem facilis adipisc voltum vero excepturi aut.
         </Paragraph>
-        <Button>Let&apos;s get started</Button>
+        <Button>
+          <StartLink to="/search">Let&apos;s get started</StartLink>
+        </Button>
       </MainContent>
     </Container>
     <AbstractContainer>
@@ -35,11 +38,30 @@ const Wrapper = styled.div`
 const MainContent = styled.div`
   position: relative;
   z-index: 20;
-  margin-top: 100px;
-  margin-left: 130px;
+  margin-top: 123px;
+  margin-left: 184px;
 
   @media (max-width: 1300px) {
     margin-left: 70px;
+  }
+
+  @media (max-width: 700px) {
+    margin-top: 90px;
+    width: 100%;
+    text-align: center;
+    margin-left: 0;
+  }
+
+  @media (max-width: 350px) {
+    margin-top: 60px;
+  }
+
+  @media (min-height: 790px) {
+    margin-top: 150px;
+  }
+
+  @media (min-height: 890px) {
+    margin-top: 180px;
   }
 `;
 
@@ -48,21 +70,61 @@ const Title = styled.h2`
   font-size: 60px;
   font-weight: 900;
   color: ${props => props.theme.colors.white};
+  line-height: 1.1;
+
+  @media (max-width: 900px) {
+    font-size: 50px;
+  }
+
+  @media (max-width: 700px) {
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media (max-width: 500px) {
+    max-width: 340px;
+    font-size: 40px;
+  }
+
+  @media (max-width: 350px) {
+    font-size: 30px;
+    max-width: 250px;
+  }
 `;
 
-const Paragraph = styled.h2`
+const Paragraph = styled.p`
   max-width: 300px;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin-top: 35px;
+  margin-bottom: 35px;
   font-size: 16px;
   line-height: 1.6;
   color: ${props => props.theme.colors.white};
+
+  @media (max-width: 700px) {
+    margin: 50px auto !important;
+    max-width: 300px !important;
+  }
+
+  @media (max-width: 350px) {
+    font-size: 14px !important;
+    margin: 30px auto !important;
+    max-width: 300px !important;
+  }
+
+  @media (min-height: 790px) {
+    margin: 40px 0;
+  }
+
+  @media (min-height: 890px) {
+    margin: 50px 0;
+    max-width: 400px;
+  }
 `;
 
 const Button = styled.button`
-  padding: 13px 42px;
+  padding: 0;
   font-size: 15px;
-  color: ${props => props.theme.colors.white};
   background-color: ${props => props.theme.colors.primaryGreen};
   border: none;
   border-radius: 4px;
@@ -71,7 +133,7 @@ const Button = styled.button`
   margin-bottom: 40px;
 
   &:hover {
-    background-color: ${props => props.theme.colors.lightYellow};
+    background-color: ${props => props.theme.colors.yellow};
   }
 
   &:focus {
@@ -81,6 +143,12 @@ const Button = styled.button`
   &:active {
     box-shadow: none;
   }
+`;
+
+const StartLink = styled(Link)`
+  display: block;
+  padding: 13px 42px;
+  color: ${props => props.theme.colors.white};
 `;
 
 const AbstractContainer = styled.div`
@@ -96,13 +164,29 @@ const AbstractBlueSquare = styled.div`
   position: absolute;
   min-width: 70%;
   width: 1356px;
-  height: 1091px;
+  height: 1020px;
   left: -361.49px;
   top: -469.06px;
   border-radius: 314px;
   transform: rotate(14deg);
   background-color: ${props => props.theme.colors.primaryDarkBlue};
   z-index: 6;
+
+  @media (min-height: 690px) {
+    height: 1080px;
+  }
+
+  @media (min-height: 790px) {
+    height: 1160px;
+  }
+
+  @media (min-height: 890px) {
+    height: 1230px;
+  }
+
+  @media (min-height: 970px) {
+    height: 1300px;
+  }
 
   @media (max-width: 1455px) {
     width: 1262px;
@@ -112,8 +196,13 @@ const AbstractBlueSquare = styled.div`
     width: 1062px;
   }
 
-  @media (max-width: 1115px) {
-    width: 962px;
+  @media (max-width: 700px) {
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+    transform: rotate(0) !important;
+    border-radius: 0 !important;
   }
 `;
 
@@ -126,7 +215,25 @@ const AbstractYellowSquare = styled.div`
   right: -330px;
   background-color: ${props => props.theme.colors.lightYellow};
   border-radius: 154px;
-  z-index: 5;
+  z-index: 7;
+
+  @media (max-width: 1200px) {
+    right: -400px;
+  }
+
+  @media (max-width: 1060px) {
+    border-radius: 254px;
+    top: -410px;
+  }
+
+  @media (max-width: 756px) {
+    width: 690px;
+  }
+
+  @media (max-width: 704px) {
+    background-color: transparent;
+    z-index: 5;
+  }
 
   @media (min-width: 1700px) {
     right: -230px;
@@ -166,6 +273,10 @@ const AbstractYellowSquareBottom = styled.div`
   @media (max-width: 1300px) {
     left: -200px;
   }
+
+  @media (max-width: 350px) {
+    left: -220px;
+  }
 `;
 
 const AbstractBlueSquareBottom = styled.div`
@@ -178,6 +289,10 @@ const AbstractBlueSquareBottom = styled.div`
   background-color: ${props => props.theme.colors.cyan};
   border-radius: 30px;
   z-index: 6;
+
+  @media (max-width: 350px) {
+    left: -20px;
+  }
 `;
 
 const AbstractRedSquareBottom = styled.div`

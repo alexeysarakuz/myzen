@@ -60,7 +60,7 @@ const RegisterPageForm = ({ errors, onSubmit }: RegisterPageFormProps) => {
       </AuthCheckboxes>
       <ButtonsRow>
         <ButtonSubmit>Sign Up</ButtonSubmit>
-        <ButtonSkip to="/dashboard/">Skip</ButtonSkip>
+        <ButtonSkip to="/search">Skip</ButtonSkip>
       </ButtonsRow>
     </FormWrapper>
   );

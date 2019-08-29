@@ -9,12 +9,12 @@ const NavHeader = () => (
       <Logo />
       <List>
         <ListItem>
-          <ListLink to="/" activeClassName="active">
+          <ListLink to="/" activeClassName="active" exact>
             Home
           </ListLink>
         </ListItem>
         <ListItem>
-          <ListLink to="/recruit">Recruit</ListLink>
+          <ListLink to="/search">Recruit</ListLink>
         </ListItem>
         <ListItem>
           <ListLink to="/find-a-work">Find a work</ListLink>
@@ -33,6 +33,7 @@ const NavHeader = () => (
           <AuthLink to="/register">Sign up</AuthLink>
         </AuthItem>
       </Auth>
+      <Hamburger></Hamburger>
     </NavCol>
   </Wrapper>
 );
@@ -55,6 +56,10 @@ const NavCol = styled.div`
 const List = styled.ul`
   display: flex;
   margin-left: 90px;
+
+  @media (max-width: 700px) {
+    display: none;
+  }
 `;
 
 const ListItem = styled.li`
@@ -93,16 +98,33 @@ const ListLink = styled(NavLink)`
 
 const Auth = styled.ul`
   display: flex;
+
+  @media (max-width: 700px) {
+    display: none;
+  }
 `;
 
 const AuthItem = styled.li`
   margin-left: 20px;
-  color: ${props => props.theme.colors.darkYellow};
   font-size: 14px;
 `;
 
 const AuthLink = styled(NavLink)`
-  color: ${props => props.theme.colors.black};
+  color: ${props => props.theme.colors.darkYellow};
+
+  @media (max-width: 704px) {
+    font-weight: 100;
+    color: ${props => props.theme.colors.white};
+  }
+`;
+
+const Hamburger = styled.div`
+  @media (max-width: 700px) {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: ${props => props.theme.colors.lightYellow};
+  }
 `;
 
 export default NavHeader;
