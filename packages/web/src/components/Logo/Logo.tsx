@@ -2,21 +2,26 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 import styled from 'styled-components';
 
-const Logo = () => (
-  <Logotype to="/">
+interface LogoProps {
+  dark?: boolean;
+}
+
+const Logo = ({ dark = false }: LogoProps) => (
+  <Logotype to="/" dark={dark}>
     <Strip>|</Strip>
     <div>myzen</div>
     <Dot>.</Dot>
   </Logotype>
 );
 
-const Logotype = styled(Link)`
+const Logotype = styled(Link)<{ dark: boolean }>`
   display: flex;
   align-items: flex-start;
   height: 30px;
   font-size: 24px;
   font-weight: bold;
   color: ${props => props.theme.colors.white};
+  ${props => props.dark && `color: ${props.theme.colors.primaryBlue}`};
 `;
 
 const Dot = styled.div`

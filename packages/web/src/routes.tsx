@@ -34,12 +34,21 @@ const NotFoundPage = Loadable({
   loading: () => <Preloader />,
 });
 
+const SearchResultsPage = Loadable({
+  loader: () =>
+    import(
+      './modules/dashboard/pages/SearchResultsPage' /* webpackChunkName: "MainPage" */
+    ),
+  loading: () => <Preloader />,
+});
+
 export default (
   <div>
     <Switch>
       <Route exact path="/" component={MainPage} />
       <Route exact path="/logout" component={LogoutPage} />
       <Route exact path="/register" component={RegisterPage} />
+      <Route exact path="/search" component={SearchResultsPage} />
       {/* Catch all routes */}
       <Route component={NotFoundPage} />
     </Switch>
