@@ -65,17 +65,46 @@ export const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
   }
 
-  .icon-user::before {
-    content: '\\e900';
-  }
+.icon-user-plus::before {
+  content: "\\e907";
+}
 
-  .icon-lock_outline::before {
-    content: "\\e899";
-  }
+.icon-settings::before {
+  content: "\\e906";
+}
 
-  .icon-mail::before {
-    content: "\\e901";
-  }
+.icon-user::before {
+  content: "\\e900";
+}
+
+.icon-lock_outline::before {
+  content: "\\e899";
+}
+
+.icon-search::before {
+  content: "\\e8b6";
+}
+
+.icon-add-outline::before {
+  content: "\\e902";
+}
+
+.icon-information-outline::before {
+  content: "\\e903";
+}
+
+.icon-time::before {
+  content: "\\e904";
+}
+
+.icon-mail::before {
+  content: "\\e901";
+}
+
+.icon-switch::before {
+  content: "\\e905";
+}
+
 `;
 
 export const theme = {
