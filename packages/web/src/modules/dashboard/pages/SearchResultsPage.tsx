@@ -13,7 +13,7 @@ const SearchResultsPage = () => (
 );
 
 const ResultsContent = styled.div`
-  margin-left: 310px;
+  margin-left: 280px;
   box-sizing: border-box;
 `;
 
