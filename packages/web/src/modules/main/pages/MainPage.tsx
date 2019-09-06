@@ -15,7 +15,7 @@ const MainPage = () => (
           quidem facilis adipisc voltum vero excepturi aut.
         </Paragraph>
         <Button>
-          <StartLink to="/search">Let&apos;s get started</StartLink>
+          <StartLink to="/search">Find a freelancer</StartLink>
         </Button>
       </MainContent>
     </Container>
