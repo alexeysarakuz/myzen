@@ -14,6 +14,7 @@ export const colorScheme = {
   },
   primaryDarkGray: { value: '#212121', name: 'PrimaryDarkGray' },
   primaryLightGray: { value: '#A0A0A0', name: 'PrimaryLightGray' },
+  secondaryDarkGray: { value: '#2B3641', name: 'secondaryDarkGray' },
   primaryGreen: { value: '#5EC695', name: 'PrimaryGreen' },
   loginPageInputBorder: { value: '#C9C9C9', name: 'LoginPageInputBorder' },
   loginPageInputPlaceholder: {
@@ -27,8 +28,9 @@ export const colorScheme = {
   cyan: { value: '#366DF9', name: 'Cyan' },
   lightRed: { value: '#FFCBC4', name: 'LightRed' },
   darkRed: { value: '#FF6650', name: 'DarkRed' },
-  lightGrey: { value: '#F9F9F9', name: 'LightGrey' },
-  darkGrey: { value: '#939393', name: 'DarkGrey' },
+  lightGray: { value: '#F9F9F9', name: 'LightGray' },
+  darkGray: { value: '#939393', name: 'DarkGray' },
+  darkGraySearchFieldBg: { value: '#F4F4F7', name: 'DarkGraySearchFieldBg' },
 };
 
 export const getColor = (colorKey: string) =>
