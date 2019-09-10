@@ -8,28 +8,28 @@ const NavBar = () => (
     <Logo dark />
     <NavList>
       <li>
-        <ItemLink to="/register" activeClassName="active" exact>
-          <span className="icon-add-outline"></span>
-          <div>Getting Started</div>
-        </ItemLink>
+        <ListItem to="/register" activeClassName="active" exact>
+          <span className="icon icon-add-outline"></span>
+          <span>Getting Started</span>
+        </ListItem>
       </li>
       <li>
-        <ItemLink to="/search" activeClassName="active">
-          <span className="icon-user-plus"></span>
-          <div>Recruit</div>
-        </ItemLink>
+        <ListItem to="/search" activeClassName="active">
+          <span className="icon icon-user-plus"></span>
+          <span>Recruit</span>
+        </ListItem>
       </li>
       <li>
-        <ItemLink to="/find-a-work" activeClassName="active">
-          <span className="icon-search"></span>
-          <div>Find a work</div>
-        </ItemLink>
+        <ListItem to="/find-a-work" activeClassName="active">
+          <span className="icon icon-search"></span>
+          <span>Find a work</span>
+        </ListItem>
       </li>
       <li>
-        <ItemLink to="/about" activeClassName="active">
-          <span className="icon-information-outline"></span>
-          <div>About</div>
-        </ItemLink>
+        <ListItem to="/about" activeClassName="active">
+          <span className="icon icon-information-outline"></span>
+          <span>About</span>
+        </ListItem>
       </li>
     </NavList>
     <OptionsList>
@@ -38,7 +38,7 @@ const NavBar = () => (
         <div>Settings</div>
       </OptionItem>
       <OptionItem>
-        <span className="icon-information-outline"></span>
+        <span className="icon-help-circle"></span>
         <div>Help</div>
       </OptionItem>
       <OptionItem>
@@ -55,7 +55,7 @@ const Bar = styled.div`
   top: 0;
   left: 0;
   width: 280px;
-  background-color: ${props => props.theme.colors.lightGray};
+  background-color: ${props => props.theme.colors.white};
   padding-left: 20px;
   padding-top: 25px;
   box-sizing: border-box;
@@ -67,21 +67,40 @@ const NavList = styled.ul`
   margin-top: 60px;
 `;
 
-const ItemLink = styled(NavLink)`
-  display: flex;
-  align-items: center;
-  color: ${props => props.theme.colors.darkGray};
+const ListItem = styled(NavLink)`
+  display: inline-block;
   font-size: 15px;
-  margin-top: 26px;
-  margin-bottom: 26px;
+  line-height: 25px;
+  color: ${props => props.theme.colors.darkGray};
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  span {
+    display: inline-block;
+    vertical-align: middle;
+    transition: 0.3s;
+  }
+
+  span.icon {
+    color: ${props => props.theme.colors.darkGray};
+    margin-right: 10px;
+    font-size: 18px;
+  }
 
   &.active {
     color: ${props => props.theme.colors.primaryBlue};
+
+    span.icon {
+      color: ${props => props.theme.colors.primaryBlue};
+    }
   }
 
-  span {
-    margin-right: 10px;
-    font-size: 18px;
+  &:hover {
+    color: ${props => props.theme.colors.primaryBlue};
+
+    span.icon {
+      color: ${props => props.theme.colors.primaryBlue};
+    }
   }
 `;
 

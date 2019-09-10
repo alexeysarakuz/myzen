@@ -69,6 +69,14 @@ export const GlobalStyle = createGlobalStyle`
   content: "\\e907";
 }
 
+.icon-help-circle::before {
+  content: "\\e908";
+}
+
+.icon-close::before {
+  content: "\\e5cd";
+}
+
 .icon-settings::before {
   content: "\\e906";
 }

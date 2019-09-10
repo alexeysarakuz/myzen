@@ -11,7 +11,7 @@ const Profile = ({ authorized }: ProfileProps) => (
     {authorized ? (
       <ProfileWidget>
         <Image src="https://thispersondoesnotexist.com/image" />
-        <Name>Olexiy</Name>
+        <Name>Alexeysarakuz</Name>
       </ProfileWidget>
     ) : (
       <div>
@@ -24,8 +24,9 @@ const Profile = ({ authorized }: ProfileProps) => (
 const ProfileWidget = styled.div`
   display: flex;
   align-items: center;
-  background-color: ${props => props.theme.colors.darkGraySearchFieldBg};
+  background-color: ${props => props.theme.colors.white};
   border-radius: 4px;
+  box-shadow: 0 3px 10px ${props => props.theme.colors.primaryBlueShadow};
   overflow: hidden;
 `;
 
@@ -35,9 +36,10 @@ const Image = styled.img`
 `;
 
 const Name = styled.h2`
-  padding: 0 30px;
+  padding: 0 25px;
   color: ${props => props.theme.colors.secondaryDarkGray};
   font-size: 13px;
+  font-weight: 500;
 `;
 
 const Button = styled(Link)`
@@ -50,6 +52,7 @@ const Button = styled(Link)`
   border-radius: 4px;
   cursor: pointer;
   transition: 0.2s;
+  box-shadow: 0 0 10px ${props => props.theme.colors.primaryBlueShadow};
 
   &:hover {
     background-color: ${props => props.theme.colors.primaryGreen};
@@ -65,7 +68,7 @@ const Button = styled(Link)`
 `;
 
 Profile.defaultProps = {
-  authorized: false,
+  authorized: true,
 };
 
 export default Profile;

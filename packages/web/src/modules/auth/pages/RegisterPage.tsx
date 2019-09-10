@@ -83,7 +83,7 @@ const RegisterPage = ({ feedbackData }: RegisterPageProps) => {
           </PageAlternative>
           <RegisterPageForm errors={errors} onSubmit={registerUser} />
           <RegisterRules>
-            By singing up, you agree to MyZen{' '}
+            By singing up, you agree to MyZen{"'s "}
             <Link to="/terms-of-conditions">Terms of Conditions</Link> and{' '}
             <Link to="/privacy-policy">Privacy Policy</Link>
           </RegisterRules>
