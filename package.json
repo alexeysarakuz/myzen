@@ -20,7 +20,8 @@
     "lint:js": "eslint --ext .ts --ext .tsx packages",
     "lint:styles": "stylelint './packages/**/*.tsx'",
     "lint:types": "tsc",
-    "prettier": "prettier --write 'packages/**/*.{js,ts,tsx}'"
+    "prettier": "prettier --write 'packages/**/*.{js,ts,tsx}'",
+    "api:start:dev": "cd packages/api && yarn start"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.0.0",
