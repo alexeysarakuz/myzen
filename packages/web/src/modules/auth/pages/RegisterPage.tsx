@@ -1,8 +1,10 @@
+import { connect } from 'react-redux';
 import { FeedbackItem } from '../auth.models';
 import FeedbackSlider from '../components/FeedbackSlider';
 import { Link } from 'react-router-dom';
 import Logo from 'components/Logo/Logo';
 import React, { useState } from 'react';
+import * as AuthActions from '../auth.actions';
 import RegisterPageForm from '../components/RegisterPageForm';
 import styled from 'styled-components';
 import { validateField } from '../auth.helpers';
@@ -43,9 +45,10 @@ const RedAbstract = () => (
 
 interface RegisterPageProps {
   feedbackData: FeedbackItem[];
+  register: Function;
 }
 
-const RegisterPage = ({ feedbackData }: RegisterPageProps) => {
+const RegisterPage = ({ feedbackData, register }: RegisterPageProps) => {
   const [errors, setErrors] = useState({
     name: [''],
     email: [''],
@@ -68,8 +71,19 @@ const RegisterPage = ({ feedbackData }: RegisterPageProps) => {
     allErrors.name = validateField('name', username);
     allErrors.email = validateField('email', email);
     allErrors.password = validateField('password', password);
-
     setErrors(allErrors);
+    if (
+      allErrors.name.length === 0 &&
+      allErrors.email.length === 0 &&
+      allErrors.password.length === 0
+    ) {
+      register({
+        name: username,
+        email,
+        password,
+        enableEmails: emailIsChecked,
+      });
+    }
     console.log('emailIsChecked', emailIsChecked);
   };
 
@@ -294,4 +308,11 @@ RegisterPage.defaultProps = {
   ],
 };
 
-export default RegisterPage;
+const mapDispatchToProps = {
+  register: AuthActions.register,
+};
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(RegisterPage);

@@ -3,6 +3,13 @@ export const LOGIN = `${namespace}/LOGIN`;
 export const REGISTER = `${namespace}/REGISTER`;
 export const LOGOUT = `${namespace}/LOGOUT`;
 
+interface RegisterPayload {
+  name: string;
+  email: string;
+  password: string;
+  enableEmails: boolean;
+}
+
 export const login = (payload: { email: string; password: string }) => ({
   type: LOGIN,
   payload: {
@@ -13,11 +20,12 @@ export const login = (payload: { email: string; password: string }) => ({
   },
 });
 
-export const register = (payload: { email: string; password: string }) => ({
+export const register = (payload: RegisterPayload) => ({
   type: REGISTER,
   payload: {
     request: {
-      url: '/auth/login',
+      method: 'POST',
+      url: '/accounts/register/',
       data: payload,
     },
   },

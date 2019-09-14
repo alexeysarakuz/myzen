@@ -5,17 +5,17 @@ import { LOGIN, REGISTER, LOGOUT } from './auth.actions';
 export const STATE_KEY = 'auth';
 
 export interface AuthState {
-  id: string;
+  name: string;
+  email: string;
   token: string;
   isAuthenticated: boolean;
-  email: string;
 }
 
 export const initialState: AuthState = {
-  id: null,
+  name: null,
+  email: null,
   token: null,
   isAuthenticated: false,
-  email: null,
 };
 
 const AuthReducer = (
@@ -25,7 +25,14 @@ const AuthReducer = (
   switch (action.type) {
     case `${LOGIN}_SUCCESS`:
     case `${REGISTER}_SUCCESS`: {
-      return R.mergeDeepRight(state, {});
+      const email = action.payload.data.data.email;
+      const name = action.payload.data.data.name;
+
+      return R.mergeDeepRight(state, {
+        isAuthenticated: true,
+        name,
+        email,
+      });
     }
     case LOGOUT: {
       return initialState;
@@ -36,9 +43,9 @@ const AuthReducer = (
   }
 };
 
-export const getId = R.path([STATE_KEY, 'id']);
+export const getId = R.path([STATE_KEY, 'name']);
+export const getIsAuthenticated = R.path([STATE_KEY, 'isAuthenticated']);
 export const getToken = R.path([STATE_KEY, 'token']);
 export const getEmail = R.path([STATE_KEY, 'email']);
-export const getIsAuthenticated = R.path([STATE_KEY, 'isAuthenticated']);
 
 export default AuthReducer;
