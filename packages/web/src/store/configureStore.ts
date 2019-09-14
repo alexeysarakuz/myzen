@@ -1,3 +1,8 @@
+import axios from 'axios';
+// @ts-ignore
+import axiosMiddleware from 'redux-axios-middleware';
+import axiosMiddlewareOptions from './middlewares/axiosMiddlewareOptions';
+import AppConfig from 'config/AppConfig';
 import { applyMiddleware, compose, createStore } from 'redux';
 import { createBrowserHistory, createMemoryHistory } from 'history';
 import createSagaMiddleware from 'redux-saga';
@@ -31,7 +36,17 @@ export default () => {
 
   const sagaMiddleware = createSagaMiddleware();
 
-  const middlewares = [routerMiddleware(history), thunk, sagaMiddleware];
+  const axiosClient = axios.create({
+    baseURL: AppConfig.apiUrl,
+    responseType: 'json',
+  });
+
+  const middlewares = [
+    routerMiddleware(history),
+    thunk,
+    axiosMiddleware(axiosClient, axiosMiddlewareOptions),
+    sagaMiddleware,
+  ];
 
   if (!isServer && typeof jest === 'undefined') {
     middlewares.push(loggerMiddleware);
@@ -46,6 +61,7 @@ export default () => {
     initialState,
     composeEnhancers(applyMiddleware(...middlewares)),
   );
+
   const persistor = persistStore(store);
 
   sagaMiddleware.run(rootSaga);

@@ -3,8 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node ./tools/serve.js",
-    "start:dev": "NODE_PATH=src SKIP_PREFLIGHT_CHECK=true react-scripts start",
+    "start:dev": "PORT=3006 NODE_PATH=src SKIP_PREFLIGHT_CHECK=true react-scripts start",
     "build": "NODE_PATH=src SKIP_PREFLIGHT_CHECK=true react-scripts build",
     "test": "NODE_PATH=src SKIP_PREFLIGHT_CHECK=true react-scripts test"
   },
