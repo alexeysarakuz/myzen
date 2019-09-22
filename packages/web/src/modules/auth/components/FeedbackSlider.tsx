@@ -62,7 +62,7 @@ const ProfileImage = styled.img`
 
 const Name = styled.h2`
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 400;
   color: ${props => props.theme.colors.primaryBlue};
 `;
 
@@ -84,7 +84,7 @@ const Description = styled.p`
 const Position = styled.h4`
   color: ${props => props.theme.colors.primaryBlue};
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.6;
 `;
 

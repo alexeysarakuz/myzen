@@ -2,6 +2,7 @@ import Logo from 'components/Logo/Logo';
 import { NavLink } from 'react-router-dom';
 import React from 'react';
 import styled from 'styled-components';
+import Profile from 'components/Profile/Profile';
 
 const NavHeader = () => (
   <Wrapper>
@@ -25,14 +26,7 @@ const NavHeader = () => (
       </List>
     </NavCol>
     <NavCol>
-      <Auth>
-        <AuthItem>
-          <AuthLink to="/login">Login</AuthLink>
-        </AuthItem>
-        <AuthItem>
-          <AuthLink to="/register">Sign up</AuthLink>
-        </AuthItem>
-      </Auth>
+      <Profile />
       <Hamburger></Hamburger>
     </NavCol>
   </Wrapper>
@@ -44,7 +38,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 25px;
+  padding-top: 19px;
   color: ${props => props.theme.colors.white};
 `;
 
@@ -93,28 +87,6 @@ const ListLink = styled(NavLink)`
     &::after {
       width: 100%;
     }
-  }
-`;
-
-const Auth = styled.ul`
-  display: flex;
-
-  @media (max-width: 700px) {
-    display: none;
-  }
-`;
-
-const AuthItem = styled.li`
-  margin-left: 20px;
-  font-size: 14px;
-`;
-
-const AuthLink = styled(NavLink)`
-  color: ${props => props.theme.colors.darkYellow};
-
-  @media (max-width: 704px) {
-    font-weight: 100;
-    color: ${props => props.theme.colors.white};
   }
 `;
 

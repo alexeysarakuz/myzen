@@ -12,7 +12,6 @@ interface SearchFieldProps {
 const SearchField = ({ defaultTags }: SearchFieldProps) => {
   const [focused, changeFocus] = useState(false);
   console.log(focused);
-
   const [tags, changeTags] = useState(defaultTags);
   const [fieldValue, changeFieldValue] = useState('');
 
@@ -37,6 +36,8 @@ const SearchField = ({ defaultTags }: SearchFieldProps) => {
   const trackTagAdding = (e: any) => {
     if (e.key === 'Enter') {
       addTag(e.target.value);
+    } else if (e.key === 'Backspace' && e.target.value === '') {
+      removeTag(tags.length - 1);
     }
   };
 
@@ -191,20 +192,11 @@ const SearchButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 `;
 
 SearchField.defaultProps = {
-  defaultTags: [
-    {
-      title: 'Voice Artist1',
-    },
-    {
-      title: 'Donald Trump',
-    },
-    {
-      title: 'Airubs',
-    },
-  ],
+  defaultTags: [],
 };
 
 export default SearchField;

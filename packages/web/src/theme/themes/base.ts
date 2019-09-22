@@ -36,7 +36,86 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: "Open Sans", serif;
+    font-family: "Open Sans", sans-serif;
+    font-style: normal;
+    font-weight: 300;
+  }
+  
+  @font-face {
+    font-family: 'Merriweather';
+    src: url('/fonts/merriweather/Merriweather-Light.ttf');
+    font-weight: 100;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Open Sans';
+    src: url('/fonts/open-sans/OpenSans-Light.ttf');
+    font-weight: 100;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Open Sans';
+    src: url('/fonts/open-sans/OpenSans-LightItalic.ttf');
+    font-weight: 100;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Open Sans';
+    src: url('/fonts/open-sans/OpenSans-Regular.ttf');
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Open Sans';
+    src: url('/fonts/open-sans/OpenSans-Italic.ttf');
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Open Sans';
+    src: url('/fonts/open-sans/OpenSans-Semibold.ttf');
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Open Sans';
+    src: url('/fonts/open-sans/OpenSans-SemiboldItalic.ttf');
+    font-weight: 500;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Open Sans';
+    src: url('/fonts/open-sans/OpenSans-Bold.ttf');
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Open Sans';
+    src: url('/fonts/open-sans/OpenSans-BoldItalic.ttf');
+    font-weight: 600;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Open Sans';
+    src: url('/fonts/open-sans/OpenSans-ExtraBold.ttf');
+    font-weight: 900;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Open Sans';
+    src: url('/fonts/open-sans/OpenSans-ExtraBoldItalic.ttf');
+    font-weight: 900;
+    font-style: italic;
   }
 
   @font-face {

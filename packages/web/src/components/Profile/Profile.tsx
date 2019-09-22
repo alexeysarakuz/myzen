@@ -1,58 +1,76 @@
+import { connect } from 'react-redux';
+import { getIsAuthenticated } from 'modules/auth/auth.reducer';
 import { Link } from 'react-router-dom';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 interface ProfileProps {
   authorized: boolean;
 }
 
-const Profile = ({ authorized }: ProfileProps) => (
-  <div>
-    {authorized ? (
-      <ProfileWidget>
-        <Image src="https://thispersondoesnotexist.com/image" />
-        <Name>Alexeysarakuz</Name>
-      </ProfileWidget>
-    ) : (
-      <div>
-        <Button to="/register">Sign Up / Log In</Button>
-      </div>
-    )}
-  </div>
-);
+const Profile = ({ authorized }: ProfileProps) => {
+  const [isLoad, changeLoad] = useState(false);
 
-const ProfileWidget = styled.div`
+  return (
+    <div>
+      {authorized ? (
+        <ProfileWidget onLoad={() => changeLoad(true)} isLoad={isLoad}>
+          <Image src="https://thispersondoesnotexist.com/image" />
+        </ProfileWidget>
+      ) : (
+        <Row>
+          <Button to="/login">Log In</Button>
+          <Button to="/register">Sign Up</Button>
+        </Row>
+      )}
+    </div>
+  );
+};
+
+const ProfileWidget = styled.div<{ isLoad: boolean }>`
   display: flex;
   align-items: center;
   background-color: ${props => props.theme.colors.white};
-  border-radius: 4px;
-  box-shadow: 0 3px 10px ${props => props.theme.colors.primaryBlueShadow};
+  border-radius: 50%;
   overflow: hidden;
+
+  ${props =>
+    !props.isLoad &&
+    `
+    &::after {
+      content: '';
+      text-align: center;
+      width: 45px;
+      height: 45px;
+      background-color: ${props.theme.colors.lightGrayTags};
+    }
+
+    img {
+      display: none;
+    }
+  `}
 `;
 
 const Image = styled.img`
-  width: 45px;
-  height: 45px;
+  width: 43px;
+  height: 43px;
 `;
 
-const Name = styled.h2`
-  padding: 0 25px;
-  color: ${props => props.theme.colors.secondaryDarkGray};
-  font-size: 13px;
-  font-weight: 500;
+const Row = styled.div`
+  display: flex;
 `;
 
 const Button = styled(Link)`
   display: block;
-  padding: 13px 32px;
-  font-size: 15px;
+  padding: 14.5px 32px;
+  font-size: 14px;
+  margin-left: 10px;
   color: ${props => props.theme.colors.white};
   background-color: ${props => props.theme.colors.primaryBlue};
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: 0.2s;
-  box-shadow: 0 0 10px ${props => props.theme.colors.primaryBlueShadow};
 
   &:hover {
     background-color: ${props => props.theme.colors.primaryGreen};
@@ -61,14 +79,13 @@ const Button = styled(Link)`
   &:focus {
     outline: none;
   }
-
-  &:active {
-    box-shadow: none;
-  }
 `;
 
-Profile.defaultProps = {
-  authorized: true,
-};
+const mapStateToProps = (state: any) => ({
+  authorized: getIsAuthenticated(state),
+});
 
-export default Profile;
+export default connect(
+  mapStateToProps,
+  null,
+)(Profile);

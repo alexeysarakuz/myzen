@@ -6,7 +6,7 @@ interface TextFieldProps {
   placeholder: string;
   value: string;
   children: JSX.Element[] | JSX.Element;
-  error: string;
+  error?: string;
   onChange: Function;
 }
 

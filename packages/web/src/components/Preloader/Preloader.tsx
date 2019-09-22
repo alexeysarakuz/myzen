@@ -12,7 +12,7 @@ Preloader.Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: white;
+  background: red;
   z-index: 2;
 `;
 

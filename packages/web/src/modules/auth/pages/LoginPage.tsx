@@ -1,68 +1,40 @@
 import { connect } from 'react-redux';
-import { FeedbackItem } from '../auth.models';
-import { getRegisterErrors } from '../auth.reducer';
+import { getLoginErrors } from '../auth.reducer';
 import { Link } from 'react-router-dom';
-import React, { useEffect } from 'react';
-import * as AuthActions from '../auth.actions';
-import RegisterPageForm from '../components/RegisterPageForm';
+import React from 'react';
 import RightColumn from '../components/RightColumn';
+import LoginPageForm from '../components/LoginPageForm';
 import styled from 'styled-components';
 import { validateField } from '../auth.helpers';
+import * as AuthActions from '../auth.actions';
 
-interface RegisterPageProps {
-  registerErrors: {
-    name?: string[];
-    email?: string[];
-    password?: string[];
+interface LoginPageProps {
+  loginErrors: {
+    general: string[];
   };
-  feedbackData: FeedbackItem[];
-  resetErrors: Function;
-  setRegisterErrors: Function;
-  register: Function;
+  setLoginErrors: Function;
+  login: Function;
 }
 
-const RegisterPage = ({
-  registerErrors,
-  setRegisterErrors,
-  resetErrors,
-  register,
-}: RegisterPageProps) => {
-  const errors = registerErrors;
-  useEffect(() => {
-    resetErrors();
-  }, [resetErrors]);
-
-  const registerUser = (
-    e: any,
-    username: string,
-    email: string,
-    password: string,
-    emailIsChecked: boolean,
-  ) => {
+const LoginPage = ({ loginErrors, setLoginErrors, login }: LoginPageProps) => {
+  const loginUser = (e: any, email: string, password: string) => {
     e.preventDefault();
-
     let allErrors = {
-      name: [''],
-      email: [''],
-      password: [''],
+      general: [''],
     };
-    allErrors.name = validateField('name', username);
-    allErrors.email = validateField('email', email);
-    allErrors.password = validateField('password', password);
 
-    if (
-      allErrors.name.length === 0 &&
-      allErrors.email.length === 0 &&
-      allErrors.password.length === 0
-    ) {
-      register({
-        name: username,
+    allErrors.general = [
+      ...validateField('email_login', email),
+      ...validateField('password_login', password),
+    ];
+
+    if (allErrors.general.length === 0) {
+      login({
         email,
         password,
-        enableEmails: emailIsChecked,
       });
     } else {
-      setRegisterErrors(allErrors);
+      setLoginErrors(allErrors);
     }
   };
 
@@ -70,15 +42,15 @@ const RegisterPage = ({
     <PageWrapper>
       <LeftCol>
         <LeftWrapper>
-          <PageTitle>Getting Started</PageTitle>
-          <PageAlternative to="/login">
-            Already have an account?
+          <PageTitle>Welcome back</PageTitle>
+          <PageAlternative to="/register">
+            Don&apos;t have an account?
           </PageAlternative>
-          <RegisterPageForm errors={errors} onSubmit={registerUser} />
+          <LoginPageForm errors={loginErrors} onSubmit={loginUser} />
           <RegisterRules>
-            By singing up, you agree to MyZen{"'s "}
+            Do not forget about{' '}
             <Link to="/terms-of-conditions">Terms of Conditions</Link> and{' '}
-            <Link to="/privacy-policy">Privacy Policy</Link>
+            <Link to="/privacy-policy">Privacy Policy</Link> please
           </RegisterRules>
         </LeftWrapper>
       </LeftCol>
@@ -202,17 +174,16 @@ const RegisterRules = styled.p`
   }
 `;
 
-const mapDispatchToProps = {
-  register: AuthActions.register,
-  setRegisterErrors: AuthActions.setRegisterErrors,
-  resetErrors: AuthActions.resetErrors,
-};
-
 const mapStateToProps = (state: any) => ({
-  registerErrors: getRegisterErrors(state),
+  loginErrors: getLoginErrors(state),
 });
+
+const mapDispatchToProps = {
+  login: AuthActions.login,
+  setLoginErrors: AuthActions.setLoginErrors,
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(RegisterPage);
+)(LoginPage);

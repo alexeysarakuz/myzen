@@ -19,7 +19,7 @@ const Logo = ({ dark = false }: LogoProps) => (
 const Logotype = styled(Link)`
   height: 30px;
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 600;
 `;
 
 const LogoContent = styled.div<{ dark: boolean }>`

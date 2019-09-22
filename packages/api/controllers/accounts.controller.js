@@ -41,7 +41,6 @@ exports.login = (req, res, next) => {
         }
       })
       .catch(err => {
-        console.log(err);
         res.status(501).json({
           message: 'Login failed. Try again later',
         });
@@ -65,7 +64,7 @@ exports.register = (req, res, next) => {
         bcrypt.hash(password, 10, (err, hash) => {
           if (err) {
             res.status(501).json({
-              error: 'Error. Something went wrong. Try again later',
+              general: 'Error. Something went wrong. Try again later',
             });
           } else {
             const user = new Account({
@@ -87,14 +86,14 @@ exports.register = (req, res, next) => {
               })
               .catch(results => {
                 res.status(500).json({
-                  message: 'Error. Something went wrong. Try again later',
+                  general: 'Error. Something went wrong. Try again later',
                 });
               });
           }
         });
       } else {
         res.status(409).json({
-          message: 'Error. Account with current email is already exists',
+          email: 'Error. Account with current email is already exists',
         });
       }
     })

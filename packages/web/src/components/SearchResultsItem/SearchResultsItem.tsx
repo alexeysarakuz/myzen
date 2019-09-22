@@ -2,6 +2,8 @@ import React from 'react';
 import { ResultItem } from 'modules/dashboard/dashboard.models';
 import styled from 'styled-components';
 
+const averageListingScore = 50.0;
+
 const SearchResultsItem = ({ item }: { item: ResultItem }) => (
   <Item>
     <UserData>
@@ -45,7 +47,7 @@ const SearchResultsItem = ({ item }: { item: ResultItem }) => (
     <ButtonsRow>
       <CommunicateButton>Book now</CommunicateButton>
       <CommunicateButton>Text now</CommunicateButton>
-      <CommunicateFullButton>Text now</CommunicateFullButton>
+      <CommunicateFullButton>Check availability</CommunicateFullButton>
     </ButtonsRow>
   </Item>
 );
@@ -53,19 +55,34 @@ const SearchResultsItem = ({ item }: { item: ResultItem }) => (
 const Item = styled.div`
   box-sizing: border-box;
   padding: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   width: 23.5%;
   background-color: ${props => props.theme.colors.white};
   box-shadow: 0 0 20px ${props => props.theme.colors.primaryBlueShadow};
+  margin-left: 1%;
+  margin-right: 1%;
+
+  &:nth-child(4n) {
+    margin-right: 0;
+  }
+
+  &:nth-child(4n + 1),
+  &:first-child {
+    margin-left: 0;
+  }
 
   @media (min-width: 1515px) {
     width: 22.5%;
     margin-bottom: 40px;
+    margin-left: 1.6%;
+    margin-right: 1.6%;
   }
 
   @media (min-width: 1655px) {
     width: 21.8%;
     padding: 23px;
+    margin-left: 2.1%;
+    margin-right: 2.1%;
   }
 `;
 
@@ -81,9 +98,10 @@ const Image = styled.img`
 `;
 
 const Name = styled.h3`
-  font-weight: 400;
-  font-size: 18px;
-  margin-left: 15px;
+  font-weight: 300;
+  font-size: 15px;
+  margin-left: 20px;
+  color: ${props => props.theme.colors.darkGraySearchResults};
 `;
 
 const Rating = styled.div`
@@ -94,12 +112,14 @@ const Rating = styled.div`
 `;
 
 const RatingNumber = styled.div`
-  width: 35%;
-  font-size: 14px;
+  width: 40%;
+  font-size: 13px;
+  color: ${props => props.theme.colors.darkGraySearchResults};
+  text-transform: uppercase;
 `;
 
 const RatingLineContainer = styled.div`
-  width: 65%;
+  width: 60%;
 `;
 
 const RatingLine = styled.div<{ width: number }>`
@@ -117,20 +137,29 @@ const RatingLine = styled.div<{ width: number }>`
     left: 0;
     width: ${props => props.width}%;
     height: 100%;
-    background-color: ${props => props.theme.colors.greenRating};
+
+    ${props =>
+      props.width > averageListingScore
+        ? `
+        background-color: ${props.theme.colors.greenRating};
+    `
+        : `
+        background-color: ${props.theme.colors.redRating};
+    `}
   }
 `;
 
 const Tags = styled.div`
   display: flex;
-  align-items: stretch;
+  align-items: flex-start;
   flex-wrap: wrap;
+  min-height: 78px;
 `;
 
 const TagsTitle = styled.h3`
   margin-bottom: 4px;
   font-size: 13px;
-  font-weight: bold;
+  font-weight: 600;
   color: ${props => props.theme.colors.darkGrayTags};
   text-transform: uppercase;
 `;
@@ -153,7 +182,8 @@ const ReviewsTitle = styled.h3`
   margin-top: 20px;
   margin-bottom: 4px;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 500;
+  line-height: 1.6;
   color: ${props => props.theme.colors.darkGrayTags};
   text-transform: uppercase;
 `;
@@ -214,12 +244,20 @@ const CommunicateButton = styled.button`
   padding: 13px;
   width: 48%;
   font-weight: 500;
-  margin-top: 10px;
-  color: ${props => props.theme.colors.primaryBlue};
   text-transform: uppercase;
+  color: ${props => props.theme.colors.primaryBlue};
   border: 1.5px solid ${props => props.theme.colors.lightGray};
   border-radius: 5px;
   background-color: ${props => props.theme.colors.white};
+  margin-top: 10px;
+  transition: 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${props => props.theme.colors.primaryBlue};
+    border-color: ${props => props.theme.colors.primaryBlue};
+    color: ${props => props.theme.colors.white};
+  }
 `;
 
 const CommunicateFullButton = styled(CommunicateButton)`
