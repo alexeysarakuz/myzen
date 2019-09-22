@@ -1,5 +1,7 @@
 export const validateField = (type: string, value: string) => {
   let errors = [];
+  const passwordPattern = /^\w{2,20}$/g;
+  const emailPattern = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/g;
   switch (type) {
     case 'name':
       const namePattern = /^\w{2,15}$/g;
@@ -14,7 +16,6 @@ export const validateField = (type: string, value: string) => {
       }
       break;
     case 'email':
-      const emailPattern = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/g;
       if (value.length > 30) {
         errors.push('Email is invalid');
       }
@@ -26,7 +27,6 @@ export const validateField = (type: string, value: string) => {
       }
       break;
     case 'password':
-      const passwordPattern = /^\w{2,20}$/g;
       if (value.length > 20) {
         errors.push('Password is too long. Max 20 characters');
       }
@@ -35,6 +35,20 @@ export const validateField = (type: string, value: string) => {
       }
       if (!value.match(passwordPattern)) {
         errors.push('Password is invalid');
+      }
+      break;
+    case 'password_login':
+      if (
+        !value.match(passwordPattern) ||
+        value.length > 20 ||
+        value.length < 6
+      ) {
+        errors.push('Check the entered data');
+      }
+      break;
+    case 'email_login':
+      if (!value.match(emailPattern) || value.length > 30 || value.length < 5) {
+        errors.push('Check the entered data');
       }
       break;
   }

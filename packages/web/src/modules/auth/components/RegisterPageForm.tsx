@@ -6,9 +6,9 @@ import TextField from './TextField';
 
 interface RegisterPageFormProps {
   errors: {
-    name: string[];
-    email: string[];
-    password: string[];
+    name?: string[];
+    email?: string[];
+    password?: string[];
   };
   onSubmit: Function;
 }
@@ -27,7 +27,7 @@ const RegisterPageForm = ({ errors, onSubmit }: RegisterPageFormProps) => {
         type="text"
         placeholder="Name"
         value={username}
-        error={errors.name[0]}
+        error={errors && errors.name && errors.name[0]}
         onChange={changeUsername}
       >
         <span className="icon-user" />
@@ -36,7 +36,7 @@ const RegisterPageForm = ({ errors, onSubmit }: RegisterPageFormProps) => {
         type="email"
         placeholder="Email"
         value={email}
-        error={errors.email[0]}
+        error={errors && errors.email && errors.email[0]}
         onChange={changeEmail}
       >
         <span className="icon-mail" />
@@ -45,7 +45,7 @@ const RegisterPageForm = ({ errors, onSubmit }: RegisterPageFormProps) => {
         type="password"
         placeholder="Password (6-20 characters)"
         value={password}
-        error={errors.password[0]}
+        error={errors && errors.password && errors.password[0]}
         onChange={changePassword}
       >
         <span className="icon-lock_outline" />
@@ -110,7 +110,7 @@ const ButtonSubmit = styled.button`
 
 const ButtonSkip = styled(Link)`
   color: ${props => props.theme.colors.primaryBlue};
-  margin-left: 44px;
+  margin-left: 40px;
   background-color: ${props => props.theme.colors.white};
   cursor: pointer;
   position: relative;

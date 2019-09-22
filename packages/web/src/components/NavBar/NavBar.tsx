@@ -1,9 +1,15 @@
+import * as AuthActions from 'modules/auth/auth.actions';
+import { connect } from 'react-redux';
 import Logo from 'components/Logo/Logo';
 import { NavLink } from 'react-router-dom';
 import React from 'react';
 import styled from 'styled-components';
 
-const NavBar = () => (
+interface NavBarProps {
+  logout: () => void;
+}
+
+const NavBar = ({ logout }: NavBarProps) => (
   <Bar>
     <Logo dark />
     <NavList>
@@ -41,7 +47,7 @@ const NavBar = () => (
         <span className="icon-help-circle"></span>
         <div>Help</div>
       </OptionItem>
-      <OptionItem>
+      <OptionItem onClick={logout}>
         <span className="icon-switch"></span>
         <div>Log out</div>
       </OptionItem>
@@ -61,6 +67,7 @@ const Bar = styled.div`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  font-weight: 300;
 `;
 
 const NavList = styled.ul`
@@ -116,6 +123,7 @@ const OptionItem = styled.li`
   font-size: 15px;
   margin-top: 25px;
   margin-bottom: 25px;
+  cursor: pointer;
 
   span {
     margin-right: 10px;
@@ -123,4 +131,11 @@ const OptionItem = styled.li`
   }
 `;
 
-export default NavBar;
+const mapDispatchToProps = {
+  logout: AuthActions.logout,
+};
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(NavBar);

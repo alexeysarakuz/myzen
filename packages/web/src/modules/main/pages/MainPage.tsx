@@ -21,7 +21,6 @@ const MainPage = () => (
     </Container>
     <AbstractContainer>
       <AbstractBlueSquare />
-      <AbstractYellowSquare />
       <AbstractCyanSquare />
       <AbstractYellowSquareBottom />
       <AbstractBlueSquareBottom />
@@ -203,57 +202,6 @@ const AbstractBlueSquare = styled.div`
     left: 0 !important;
     transform: rotate(0) !important;
     border-radius: 0 !important;
-  }
-`;
-
-const AbstractYellowSquare = styled.div`
-  position: absolute;
-  width: 700px;
-  height: 519px;
-  transform: rotate(13deg);
-  top: -426px;
-  right: -330px;
-  background-color: ${props => props.theme.colors.lightYellow};
-  border-radius: 154px;
-  z-index: 7;
-
-  @media (max-width: 1200px) {
-    right: -400px;
-  }
-
-  @media (max-width: 1060px) {
-    border-radius: 254px;
-    top: -410px;
-  }
-
-  @media (max-width: 756px) {
-    width: 690px;
-  }
-
-  @media (max-width: 704px) {
-    background-color: transparent;
-    z-index: 5;
-  }
-
-  @media (min-width: 1700px) {
-    right: -230px;
-  }
-
-  @media (min-width: 1850px) {
-    width: 900px;
-    right: -230px;
-  }
-
-  @media (min-width: 1980px) {
-    width: 1000px;
-    right: -300px;
-    top: -400px;
-  }
-
-  @media (min-width: 2190px) {
-    width: 1000px;
-    right: -200px;
-    top: -360px;
   }
 `;
 

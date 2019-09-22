@@ -1,6 +1,13 @@
 import * as R from 'ramda';
 
-import { LOGIN, REGISTER, LOGOUT } from './auth.actions';
+import {
+  LOGIN,
+  REGISTER,
+  LOGOUT,
+  RESET_ERRORS,
+  SET_REGISTER_ERRORS,
+  SET_LOGIN_ERRORS,
+} from './auth.actions';
 
 export const STATE_KEY = 'auth';
 
@@ -9,6 +16,14 @@ export interface AuthState {
   email: string;
   token: string;
   isAuthenticated: boolean;
+  registerErrors: {
+    email: string[];
+    name: string[];
+    password: string[];
+  };
+  loginErrors: {
+    general: string[];
+  };
 }
 
 export const initialState: AuthState = {
@@ -16,6 +31,14 @@ export const initialState: AuthState = {
   email: null,
   token: null,
   isAuthenticated: false,
+  registerErrors: {
+    email: [],
+    name: [],
+    password: [],
+  },
+  loginErrors: {
+    general: [],
+  },
 };
 
 const AuthReducer = (
@@ -28,11 +51,16 @@ const AuthReducer = (
       const email = action.payload.data.data.email;
       const name = action.payload.data.data.name;
 
-      return R.mergeDeepRight(state, {
-        isAuthenticated: true,
-        name,
-        email,
-      });
+      return { ...state, isAuthenticated: true, name, email };
+    }
+    case `${SET_REGISTER_ERRORS}`: {
+      return { ...state, registerErrors: action.payload };
+    }
+    case `${SET_LOGIN_ERRORS}`: {
+      return { ...state, loginErrors: action.payload };
+    }
+    case `${RESET_ERRORS}`: {
+      return { ...state, registerErrors: {}, loginErrors: {} };
     }
     case LOGOUT: {
       return initialState;
@@ -42,6 +70,9 @@ const AuthReducer = (
     }
   }
 };
+
+export const getRegisterErrors = R.path([STATE_KEY, 'registerErrors']);
+export const getLoginErrors = R.path([STATE_KEY, 'loginErrors']);
 
 export const getId = R.path([STATE_KEY, 'name']);
 export const getIsAuthenticated = R.path([STATE_KEY, 'isAuthenticated']);
