@@ -1,30 +1,33 @@
+import Abstractions from '../components/Abstractions';
 import Container from 'components/Grid/Container';
 import NavHeader from 'components/NavHeader/NavHeader';
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import Widgets from '../components/Widgets';
 
 const MainPage = () => (
   <Wrapper>
     <Container>
       <NavHeader />
       <MainContent>
-        <Title>You hate routine, right?</Title>
-        <Paragraph>
-          Lorem ipsum dolor sit, amet cotetur adipisicing elit. Beatae illum
-          quidem facilis adipisc voltum vero excepturi aut.
-        </Paragraph>
-        <Button>
-          <StartLink to="/search">Find a freelancer</StartLink>
-        </Button>
+        <div>
+          <Title>You hate routine, right?</Title>
+          <Paragraph>
+            Lorem ipsum dolor sit, amet cotetur adipisicing elit. Beatae illum
+            quidem facilis adipisc voltum vero excepturi aut.
+          </Paragraph>
+          <Button>
+            <StartLink to="/search">Find a freelancer</StartLink>
+          </Button>
+        </div>
+        <WidgetsContainer>
+          <Widgets />
+        </WidgetsContainer>
       </MainContent>
     </Container>
     <AbstractContainer>
-      <AbstractBlueSquare />
-      <AbstractCyanSquare />
-      <AbstractYellowSquareBottom />
-      <AbstractBlueSquareBottom />
-      <AbstractRedSquareBottom />
+      <Abstractions />
     </AbstractContainer>
   </Wrapper>
 );
@@ -32,12 +35,16 @@ const MainPage = () => (
 const Wrapper = styled.div`
   position: relative;
   min-height: 100vh;
+  overflow-x: hidden;
 `;
 
 const MainContent = styled.div`
   position: relative;
+  display: flex;
+  justify-content: flex-start;
   z-index: 20;
-  margin-top: 123px;
+  margin-top: 83px;
+  padding-top: 30px;
   margin-left: 184px;
 
   @media (max-width: 1300px) {
@@ -45,10 +52,11 @@ const MainContent = styled.div`
   }
 
   @media (max-width: 700px) {
-    margin-top: 90px;
+    margin-top: 10px;
     width: 100%;
     text-align: center;
     margin-left: 0;
+    flex-direction: column;
   }
 
   @media (max-width: 350px) {
@@ -56,23 +64,30 @@ const MainContent = styled.div`
   }
 
   @media (min-height: 790px) {
-    margin-top: 150px;
+    margin-top: 113px;
   }
 
   @media (min-height: 890px) {
-    margin-top: 180px;
+    margin-top: 163px;
   }
 `;
 
 const Title = styled.h2`
   max-width: 500px;
-  font-size: 60px;
+  margin-top: 35px;
+  font-size: 57px;
   font-weight: 900;
-  color: ${props => props.theme.colors.white};
   line-height: 1.1;
+  color: ${props => props.theme.colors.white};
 
-  @media (max-width: 900px) {
+  @media (max-width: 1258px) {
+    max-width: 450px;
     font-size: 50px;
+  }
+
+  @media (max-width: 1055px) {
+    min-width: 380px;
+    font-size: 45px;
   }
 
   @media (max-width: 700px) {
@@ -101,7 +116,7 @@ const Paragraph = styled.p`
   color: ${props => props.theme.colors.white};
 
   @media (max-width: 700px) {
-    margin: 50px auto !important;
+    margin: 40px auto !important;
     max-width: 300px !important;
   }
 
@@ -150,109 +165,45 @@ const StartLink = styled(Link)`
   color: ${props => props.theme.colors.white};
 `;
 
+const WidgetsContainer = styled.div`
+  transform: translateX(-15px);
+
+  @media (max-width: 1300px) {
+    transform: translateX(55px);
+  }
+
+  @media (max-width: 1258px) {
+    transform: translateX(25px);
+  }
+
+  @media (max-width: 1258px) {
+    transform: translateX(-15px);
+  }
+
+  @media (max-width: 1100px) {
+    transform: translateX(0);
+  }
+
+  @media (max-width: 1060px) {
+    transform: translateX(115px);
+  }
+
+  @media (max-width: 1010px) {
+    transform: translateX(55px);
+  }
+
+  @media (max-width: 892px) {
+    transform: translateX(0);
+  }
+`;
+
 const AbstractContainer = styled.div`
-  top: 0;
   position: absolute;
+  z-index: 4;
+  top: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  z-index: 4;
-`;
-
-const AbstractBlueSquare = styled.div`
-  position: absolute;
-  min-width: 70%;
-  width: 1356px;
-  height: 1020px;
-  left: -361.49px;
-  top: -469.06px;
-  border-radius: 314px;
-  transform: rotate(14deg);
-  background-color: ${props => props.theme.colors.primaryDarkBlue};
-  z-index: 6;
-
-  @media (min-height: 690px) {
-    height: 1080px;
-  }
-
-  @media (min-height: 790px) {
-    height: 1160px;
-  }
-
-  @media (min-height: 890px) {
-    height: 1230px;
-  }
-
-  @media (min-height: 970px) {
-    height: 1300px;
-  }
-
-  @media (max-width: 1455px) {
-    width: 1262px;
-  }
-
-  @media (max-width: 1300px) {
-    width: 1062px;
-  }
-
-  @media (max-width: 700px) {
-    width: 100% !important;
-    height: 100% !important;
-    top: 0 !important;
-    left: 0 !important;
-    transform: rotate(0) !important;
-    border-radius: 0 !important;
-  }
-`;
-
-const AbstractCyanSquare = styled.div``;
-
-const AbstractYellowSquareBottom = styled.div`
-  position: absolute;
-  bottom: 30px;
-  left: -170px;
-  width: 243px;
-  height: 243px;
-  border-radius: 56px;
-  z-index: 7;
-  background-color: ${props => props.theme.colors.lightYellow};
-  transform: rotate(15deg);
-
-  @media (max-width: 1300px) {
-    left: -200px;
-  }
-
-  @media (max-width: 350px) {
-    left: -220px;
-  }
-`;
-
-const AbstractBlueSquareBottom = styled.div`
-  position: absolute;
-  bottom: -20px;
-  left: 0;
-  width: 90px;
-  height: 90px;
-  transform: rotate(15deg);
-  background-color: ${props => props.theme.colors.cyan};
-  border-radius: 30px;
-  z-index: 6;
-
-  @media (max-width: 350px) {
-    left: -20px;
-  }
-`;
-
-const AbstractRedSquareBottom = styled.div`
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  bottom: 15px;
-  left: 120px;
-  transform: rotate(15deg);
-  background-color: ${props => props.theme.colors.lightRed};
-  border-radius: 10px;
-  z-index: 8;
 `;
 
 export default MainPage;

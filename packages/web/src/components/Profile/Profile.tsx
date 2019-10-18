@@ -66,18 +66,24 @@ const Button = styled(Link)`
   font-size: 14px;
   margin-left: 10px;
   color: ${props => props.theme.colors.white};
-  background-color: ${props => props.theme.colors.primaryBlue};
+  background-color: ${props => props.theme.colors.primaryGreen};
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: 0.2s;
 
   &:hover {
-    background-color: ${props => props.theme.colors.primaryGreen};
+    background-color: ${props => props.theme.colors.yellow};
   }
 
   &:focus {
     outline: none;
+  }
+
+  @media (max-width: 820px) {
+    padding: 14.5px 27px;
+    font-size: 13px;
+    margin-left: 7px;
   }
 `;
 
