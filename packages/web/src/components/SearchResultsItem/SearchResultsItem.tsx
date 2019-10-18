@@ -56,19 +56,44 @@ const Item = styled.div`
   box-sizing: border-box;
   padding: 15px;
   margin-bottom: 20px;
-  width: 23.5%;
   background-color: ${props => props.theme.colors.white};
   box-shadow: 0 0 20px ${props => props.theme.colors.primaryBlueShadow};
-  margin-left: 1%;
-  margin-right: 1%;
 
-  &:nth-child(4n) {
-    margin-right: 0;
+  @media (min-width: 1384px) {
+    width: 23.5%;
+    margin-left: 1%;
+    margin-right: 1%;
+
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+
+    &:nth-child(4n + 1),
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+  /* 1.3 - 1
+ 5.3 - x */
+  @media (max-width: 1383px) {
+    width: 26.65%;
+    margin-left: 3%;
+    margin-right: 3%;
+
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+
+    &:nth-child(3n + 1),
+    &:first-child {
+      margin-left: 0;
+    }
   }
 
-  &:nth-child(4n + 1),
-  &:first-child {
-    margin-left: 0;
+  @media (max-width: 1277px) {
+    width: 30%;
+    margin-left: 2%;
+    margin-right: 2%;
   }
 
   @media (min-width: 1515px) {

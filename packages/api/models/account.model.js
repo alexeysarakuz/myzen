@@ -5,6 +5,8 @@ const accountSchema = mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+
+  // roles, rating, about,
 });
 
 module.exports = mongoose.model('Account', accountSchema);

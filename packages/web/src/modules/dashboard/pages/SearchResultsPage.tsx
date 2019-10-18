@@ -104,9 +104,6 @@ const ResultsListing = styled.div`
 `;
 
 SearchResultsPage.defaultProps = {
-  location: {
-    search: 'asd',
-  },
   results: [
     {
       id: 'asdfsfd',
