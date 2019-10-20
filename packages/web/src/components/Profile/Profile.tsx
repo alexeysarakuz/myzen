@@ -34,20 +34,37 @@ const ProfileWidget = styled.div<{ isLoad: boolean }>`
   border-radius: 50%;
   overflow: hidden;
 
+  @keyframes animationGradient {
+    0% {
+      background-position: 0 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0 50%;
+    }
+  }
+
   ${props =>
     !props.isLoad &&
     `
-    &::after {
-      content: '';
-      text-align: center;
-      width: 45px;
-      height: 45px;
-      background-color: ${props.theme.colors.lightGrayTags};
-    }
+      &::after {
+        content: '';
+        text-align: center;
+        width: 45px;
+        height: 45px;
+        background: linear-gradient(to right, rgb(243, 243, 243), rgb(201, 201, 201));
+	      background-size: 400% 400%;
+        animation: animationGradient 3s ease infinite; 
 
-    img {
-      display: none;
-    }
+      }
+
+      img {
+        display: none;
+      }
   `}
 `;
 

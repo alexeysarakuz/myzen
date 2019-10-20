@@ -41,6 +41,10 @@ const Row = styled.div`
   @media (max-width: 561px) {
     justify-content: center;
   }
+
+  @media (max-width: 430px) {
+    display: none;
+  }
 `;
 
 const ScheduleRow = styled(Row)`

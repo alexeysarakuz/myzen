@@ -7,6 +7,7 @@ import SearchField from 'components/SearchField/SearchField';
 import SearchResultsItem from 'components/SearchResultsItem/SearchResultsItem';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
+import Hamburger from 'components/Hamburger/Hamburger';
 
 const SearchResultsPage = ({ location, results }: any) => {
   let urlTags = queryString.parse(location.search).tags;
@@ -21,11 +22,18 @@ const SearchResultsPage = ({ location, results }: any) => {
 
   return (
     <Page>
-      <NavBar />
+      <NavBarContainer>
+        <NavBar />
+      </NavBarContainer>
       <ResultsContent>
         <ResultsHeader>
           <SearchField defaultTags={inputTags} />
-          <Profile />
+          <ProfileContainer>
+            <Profile />
+          </ProfileContainer>
+          <HamburgerContainer>
+            <Hamburger />
+          </HamburgerContainer>
         </ResultsHeader>
         <FiltersPanel>
           <SearchCount>Search Results (21)</SearchCount>
@@ -47,6 +55,27 @@ const Page = styled.div`
   background: ${props => props.theme.colors.lightGray};
 `;
 
+const NavBarContainer = styled.div`
+  @media (max-width: 731px) {
+    display: none;
+  }
+`;
+
+const ProfileContainer = styled.div`
+  @media (max-width: 731px) {
+    display: none;
+  }
+`;
+
+const HamburgerContainer = styled.div`
+  margin-left: 30px;
+  display: none;
+
+  @media (max-width: 731px) {
+    display: block;
+  }
+`;
+
 const ResultsContent = styled.div`
   min-height: 100vh;
   padding-left: 280px;
@@ -59,6 +88,10 @@ const ResultsContent = styled.div`
   @media (min-width: 1655px) {
     max-width: 1430px;
     margin: 0 auto;
+  }
+
+  @media (max-width: 731px) {
+    padding-left: 0;
   }
 `;
 

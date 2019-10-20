@@ -77,16 +77,24 @@ const Hamburger = ({ authorized, logout }: HamburgerProps) => {
         <SupportList>
           <li>
             <ListLink to="/about">
-              <span className="icon icon-information-outline" />
-              <ListItem>About</ListItem>
+              <span className="icon icon-settings" />
+              <ListItem>Settings</ListItem>
             </ListLink>
           </li>
           <li>
-            <ListCategory onClick={logout}>
-              <span className="icon icon-switch" />
-              <ListItem>Logout</ListItem>
-            </ListCategory>
+            <ListLink to="/about">
+              <span className="icon icon-information-outline" />
+              <ListItem>Help</ListItem>
+            </ListLink>
           </li>
+          {authorized && (
+            <li>
+              <ListCategory onClick={logout}>
+                <span className="icon icon-switch" />
+                <ListItem>Logout</ListItem>
+              </ListCategory>
+            </li>
+          )}
         </SupportList>
       </Menu>
       <Overlay isActive={isActive} onClick={() => setIsActive(false)} />
@@ -128,7 +136,7 @@ const Menu = styled.div<{ isActive: boolean }>`
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    padding: 25px 20px;
+    padding: 18px 20px;
     position: fixed;
     width: 360px;
     height: 100%;
@@ -232,31 +240,49 @@ const ListItem = styled.span`
 
 const ProfileWidget = styled.div<{ isLoad: boolean }>`
   display: flex;
+  width: 45px;
+  height: 45px;
   align-items: center;
   background-color: ${props => props.theme.colors.white};
   border-radius: 50%;
   overflow: hidden;
 
+  @keyframes animationGradient {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
   ${props =>
     !props.isLoad &&
     `
-    &::after {
-      content: '';
-      text-align: center;
-      width: 45px;
-      height: 45px;
-      background-color: ${props.theme.colors.lightGrayTags};
-    }
+      &::after {
+        content: '';
+        text-align: center;
+        width: 45px;
+        height: 45px;
+        background: linear-gradient(to right, rgb(243, 243, 243), rgb(201, 201, 201));
+	      background-size: 400% 400%;
+        animation: animationGradient 3s ease infinite; 
+      }
 
-    img {
-      display: none;
-    }
+      img {
+        display: none;
+      }
   `}
 `;
 
 const Image = styled.img`
-  width: 43px;
-  height: 43px;
+  width: 45px;
+  height: 45px;
 `;
 
 const Row = styled.div`

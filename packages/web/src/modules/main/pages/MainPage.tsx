@@ -60,7 +60,7 @@ const MainContent = styled.div`
   }
 
   @media (max-width: 350px) {
-    margin-top: 60px;
+    margin-top: 0;
   }
 
   @media (min-height: 790px) {
@@ -98,10 +98,11 @@ const Title = styled.h2`
 
   @media (max-width: 500px) {
     max-width: 340px;
+    min-width: auto;
     font-size: 40px;
   }
 
-  @media (max-width: 350px) {
+  @media (max-width: 411px) {
     font-size: 30px;
     max-width: 250px;
   }
