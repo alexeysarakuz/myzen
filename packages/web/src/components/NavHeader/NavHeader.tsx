@@ -1,3 +1,4 @@
+import Hamburger from 'components/Hamburger/Hamburger';
 import Logo from 'components/Logo/Logo';
 import { NavLink } from 'react-router-dom';
 import React from 'react';
@@ -7,7 +8,9 @@ import Profile from 'components/Profile/Profile';
 const NavHeader = () => (
   <Wrapper>
     <NavCol>
-      <Logo />
+      <LogoContainer>
+        <Logo />
+      </LogoContainer>
       <List>
         <ListItem>
           <ListLink to="/" activeClassName="active" exact>
@@ -35,8 +38,6 @@ const NavHeader = () => (
 );
 
 const Wrapper = styled.div`
-  position: relative;
-  z-index: 5;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -49,7 +50,14 @@ const NavCol = styled.div`
   align-items: center;
 `;
 
+const LogoContainer = styled.div`
+  position: relative;
+  z-index: 7;
+`;
+
 const List = styled.ul`
+  position: relative;
+  z-index: 7;
   display: flex;
   margin-left: 90px;
 
@@ -65,7 +73,7 @@ const List = styled.ul`
 const ListItem = styled.li`
   margin-right: 30px;
   font-size: 14px;
-  font-weight: 100;
+  font-weight: 300;
 
   @media (max-width: 820px) {
     font-size: 13px;
@@ -101,16 +109,10 @@ const ListLink = styled(NavLink)`
   }
 `;
 
-const Hamburger = styled.div`
-  @media (max-width: 731px) {
-    width: 50px;
-    height: 50px;
-    border-radius: 10px;
-    background-color: ${props => props.theme.colors.lightYellow};
-  }
-`;
-
 const ProfileContainer = styled.div`
+  position: relative;
+  z-index: 7;
+
   @media (max-width: 731px) {
     display: none;
   }

@@ -28,10 +28,17 @@ const WidgetContainer = styled.div`
   padding: 70px 110px;
   background-color: ${props => props.theme.colors.lightGrayWidgetsBg};
   color: ${props => props.theme.colors.primaryLightGray};
+
+  @media (max-width: 615px) {
+    transform: scale(1);
+    width: 100%;
+    box-sizing: border-box;
+  }
 `;
 
 const Title = styled.h2`
   font-size: 15px;
+  text-align: left;
   margin-bottom: 6px;
 `;
 
