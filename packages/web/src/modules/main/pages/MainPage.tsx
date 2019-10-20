@@ -43,7 +43,7 @@ const MainContent = styled.div`
   display: flex;
   justify-content: flex-start;
   z-index: 20;
-  margin-top: 83px;
+  margin-top: 53px;
   padding-top: 30px;
   margin-left: 184px;
 
@@ -68,13 +68,13 @@ const MainContent = styled.div`
   }
 
   @media (min-height: 890px) {
-    margin-top: 163px;
+    margin-top: 133px;
   }
 `;
 
 const Title = styled.h2`
   max-width: 500px;
-  margin-top: 35px;
+  margin-top: 45px;
   font-size: 57px;
   font-weight: 900;
   line-height: 1.1;
@@ -114,6 +114,10 @@ const Paragraph = styled.p`
   font-size: 16px;
   line-height: 1.6;
   color: ${props => props.theme.colors.white};
+
+  @media (min-width: 1697px) {
+    margin: 55px 0 !important;
+  }
 
   @media (max-width: 700px) {
     margin: 40px auto !important;
@@ -168,6 +172,10 @@ const StartLink = styled(Link)`
 const WidgetsContainer = styled.div`
   transform: translateX(-15px);
 
+  @media (min-width: 1697px) {
+    transform: translateX(90px);
+  }
+
   @media (max-width: 1300px) {
     transform: translateX(55px);
   }
@@ -194,6 +202,11 @@ const WidgetsContainer = styled.div`
 
   @media (max-width: 892px) {
     transform: translateX(0);
+  }
+
+  @media (max-width: 700px) {
+    margin-bottom: 50px;
+    margin-top: 30px;
   }
 `;
 

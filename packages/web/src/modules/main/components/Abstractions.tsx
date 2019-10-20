@@ -77,6 +77,13 @@ const AbstractCyanSquare = styled.div`
     top: 20px;
   }
 
+  @media (min-width: 1697px) {
+    width: 1056px;
+    height: 720px;
+    top: 30px;
+    left: 300px;
+  }
+
   @media (max-width: 1300px) {
     left: 60px;
     height: 560px;

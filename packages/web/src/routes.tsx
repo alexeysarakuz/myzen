@@ -50,6 +50,14 @@ const SearchResultsPage = Loadable({
   loading: () => <Preloader />,
 });
 
+const FindWorkPage = Loadable({
+  loader: () =>
+    import(
+      './modules/dashboard/pages/FindWorkPage' /* webpackChunkName: "FindWorkPage" */
+    ),
+  loading: () => <Preloader />,
+});
+
 export default (
   <div>
     <Switch>
@@ -58,6 +66,7 @@ export default (
       <Route exact path="/register" component={RegisterPage} />
       <Route exact path="/login" component={LoginPage} />
       <Route exact path="/search" component={SearchResultsPage} />
+      <Route exact path="/find-a-work" component={FindWorkPage} />
       {/* Catch all routes */}
       <Route component={NotFoundPage} />
     </Switch>

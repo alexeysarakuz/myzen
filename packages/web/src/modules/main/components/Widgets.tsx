@@ -17,14 +17,14 @@ const Widgets = () => (
         <DailyReportWidget />
       </DailyReportWidgetContainer>
     </Row>
-    <Row>
+    <ScheduleRow>
       <ScheduleWidgetContainer>
         <ScheduleWidget />
       </ScheduleWidgetContainer>
       <ProgressContainer>
         <ProgressWidget />
       </ProgressContainer>
-    </Row>
+    </ScheduleRow>
     <BackgroundContainer>
       <BackgroundWidget />
     </BackgroundContainer>
@@ -37,6 +37,16 @@ const Row = styled.div`
   @media (max-width: 700px) {
     justify-content: space-between;
   }
+
+  @media (max-width: 561px) {
+    justify-content: center;
+  }
+`;
+
+const ScheduleRow = styled(Row)`
+  @media (max-width: 561px) {
+    justify-content: center;
+  }
 `;
 
 const WorkingWidgetContainer = styled.div`
@@ -47,6 +57,10 @@ const WorkingWidgetContainer = styled.div`
     position: relative;
     z-index: 20;
     transform: scale(0.9);
+  }
+
+  @media (max-width: 615px) {
+    margin-left: 0;
   }
 `;
 
@@ -61,6 +75,10 @@ const DailyReportWidgetContainer = styled.div`
     transform: scale(0.9);
     margin-left: 160px;
   }
+
+  @media (max-width: 561px) {
+    margin-left: 40px;
+  }
 `;
 
 const ScheduleWidgetContainer = styled.div`
@@ -72,6 +90,11 @@ const ScheduleWidgetContainer = styled.div`
     position: relative;
     z-index: 20;
     transform: scale(0.9);
+  }
+
+  @media (max-width: 615px) {
+    margin-left: 0;
+    margin-top: 0;
   }
 `;
 
@@ -87,6 +110,10 @@ const ProgressContainer = styled.div`
     margin-top: 40px;
     margin-left: 20px;
   }
+
+  @media (max-width: 561px) {
+    display: none;
+  }
 `;
 
 const BackgroundContainer = styled.div`
@@ -99,6 +126,16 @@ const BackgroundContainer = styled.div`
     transform: scale(0.9);
     top: 80px;
     left: 80px;
+  }
+
+  @media (max-width: 615px) {
+    left: 12.5%;
+    transform: scale(1);
+    width: 75%;
+  }
+
+  @media (max-width: 561px) {
+    display: none;
   }
 `;
 

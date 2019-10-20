@@ -32,7 +32,6 @@ export const colorScheme = {
   lightGray: { value: 'rgba(240, 240, 244, 0.75)', name: 'LightGray' },
   primaryLightGray: { value: '#A0A0A0', name: 'PrimaryLightGray' },
   lightGrayTags: { value: '#F4F5F9', name: 'LightGrayTags' },
-  lightGrayImageLoading: { value: '#F4F5F9', name: 'LightGrayImageLoading' },
   lightGrayProgress: { value: '#EAEAEA', name: 'LightGrayProgress' },
   lightGrayWidgetLoader: { value: '#E9E9E9', name: 'LightGrayWidgetLoader' },
   lightGrayWidgetsBg: { value: '#FDFDFD', name: 'LightGrayWidgetsBg' },
