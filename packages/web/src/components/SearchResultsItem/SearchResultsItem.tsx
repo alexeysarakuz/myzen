@@ -59,23 +59,28 @@ const Item = styled.div`
   background-color: ${props => props.theme.colors.white};
   box-shadow: 0 0 20px ${props => props.theme.colors.primaryBlueShadow};
 
-  @media (min-width: 1384px) {
-    width: 23.5%;
-    margin-left: 1%;
-    margin-right: 1%;
+  @media (min-width: 0) and (max-width: 580px) {
+    width: 100%;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
 
-    &:nth-child(4n) {
+  @media (min-width: 580px) and (max-width: 1277px) {
+    width: 48%;
+    margin-left: 2%;
+    margin-right: 2%;
+
+    &:nth-child(2n) {
       margin-right: 0;
     }
 
-    &:nth-child(4n + 1),
-    &:first-child {
+    &:first-child,
+    &:nth-child(2n + 1) {
       margin-left: 0;
     }
   }
-  /* 1.3 - 1
- 5.3 - x */
-  @media (max-width: 1383px) {
+
+  @media (min-width: 1277px) and (max-width: 1384px) {
     width: 26.65%;
     margin-left: 3%;
     margin-right: 3%;
@@ -90,10 +95,19 @@ const Item = styled.div`
     }
   }
 
-  @media (max-width: 1277px) {
-    width: 30%;
-    margin-left: 2%;
-    margin-right: 2%;
+  @media (min-width: 1384px) and (max-width: 1515px) {
+    width: 23.5%;
+    margin-left: 1%;
+    margin-right: 1%;
+
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+
+    &:nth-child(4n + 1),
+    &:first-child {
+      margin-left: 0;
+    }
   }
 
   @media (min-width: 1515px) {

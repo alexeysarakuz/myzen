@@ -41,8 +41,12 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 19px;
   color: ${props => props.theme.colors.white};
+  padding-top: 19px;
+
+  @media (max-width: 731px) {
+    padding-top: 15px;
+  }
 `;
 
 const NavCol = styled.div`
