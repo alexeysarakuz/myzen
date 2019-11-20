@@ -1,23 +1,32 @@
 import * as AuthActions from 'modules/auth/auth.actions';
 import { connect } from 'react-redux';
+import { getIsAuthenticated } from 'modules/auth/auth.reducer';
 import Logo from 'components/Logo/Logo';
 import { NavLink } from 'react-router-dom';
 import React from 'react';
 import styled from 'styled-components';
 
 interface NavBarProps {
+  authorized: boolean;
   logout: () => void;
 }
 
-const NavBar = ({ logout }: NavBarProps) => (
+const NavBar = ({ authorized = true, logout }: NavBarProps) => (
   <Bar>
     <Logo dark />
     <NavList>
       <li>
-        <ListItem to="/register" activeClassName="active" exact>
-          <span className="icon icon-add-outline"></span>
-          <span>Getting Started</span>
-        </ListItem>
+        {authorized ? (
+          <ListItem to="/getting-started" activeClassName="active" exact>
+            <span className="icon icon-add-outline"></span>
+            <span>Getting Started</span>
+          </ListItem>
+        ) : (
+          <ListItem to="/register" activeClassName="active" exact>
+            <span className="icon icon-add-outline"></span>
+            <span>Getting Started</span>
+          </ListItem>
+        )}
       </li>
       <li>
         <ListItem to="/search" activeClassName="active">
@@ -47,10 +56,12 @@ const NavBar = ({ logout }: NavBarProps) => (
         <span className="icon-help-circle"></span>
         <div>Help</div>
       </OptionItem>
-      <OptionItem onClick={logout}>
-        <span className="icon-switch"></span>
-        <div>Log out</div>
-      </OptionItem>
+      {authorized && (
+        <OptionItem onClick={logout}>
+          <span className="icon-switch"></span>
+          <div>Log out</div>
+        </OptionItem>
+      )}
     </OptionsList>
   </Bar>
 );
@@ -131,11 +142,15 @@ const OptionItem = styled.li`
   }
 `;
 
+const mapStateToProps = (state: any) => ({
+  authorized: getIsAuthenticated(state),
+});
+
 const mapDispatchToProps = {
   logout: AuthActions.logout,
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(NavBar);

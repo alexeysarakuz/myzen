@@ -63,6 +63,14 @@ const MainContent = styled.div`
     margin-top: 0;
   }
 
+  @media (max-width: 600px) and (min-height: 667px) {
+    margin-top: 35px;
+  }
+
+  @media (max-width: 600px) and (min-height: 730px) {
+    margin-top: 75px;
+  }
+
   @media (min-height: 790px) {
     margin-top: 113px;
   }
@@ -102,9 +110,9 @@ const Title = styled.h2`
     font-size: 40px;
   }
 
-  @media (max-width: 411px) {
-    font-size: 30px;
-    max-width: 250px;
+  @media (max-width: 340px) {
+    font-size: 36px;
+    max-width: 100%;
   }
 `;
 
@@ -129,6 +137,10 @@ const Paragraph = styled.p`
     font-size: 14px !important;
     margin: 30px auto !important;
     max-width: 300px !important;
+  }
+
+  @media (max-width: 340px) {
+    margin: 36px auto !important;
   }
 
   @media (min-height: 790px) {
@@ -161,6 +173,10 @@ const Button = styled.button`
 
   &:active {
     box-shadow: none;
+  }
+
+  @media (max-width: 415px) {
+    margin-top: 40px;
   }
 `;
 

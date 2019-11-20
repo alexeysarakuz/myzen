@@ -54,12 +54,11 @@ const ProfileWidget = styled.div<{ isLoad: boolean }>`
       &::after {
         content: '';
         text-align: center;
-        width: 45px;
-        height: 45px;
+        width: 43px;
+        height: 43px;
         background: linear-gradient(to right, rgb(243, 243, 243), rgb(201, 201, 201));
 	      background-size: 400% 400%;
-        animation: animationGradient 3s ease infinite; 
-
+        animation: animationGradient 3s ease infinite;
       }
 
       img {

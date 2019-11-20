@@ -10,7 +10,7 @@ import {
 } from './auth.actions';
 
 function* registerSuccessSaga() {
-  yield put(push('/'));
+  yield put(push('/getting-started'));
 }
 
 function* registerFailSaga(action: any) {
@@ -54,7 +54,7 @@ function* loginFailSaga(action: any) {
 }
 
 function* loginSuccessSaga() {
-  yield put(push('/'));
+  yield put(push('/getting-started'));
 }
 
 function* logoutSaga(): any {
