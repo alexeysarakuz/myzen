@@ -1,4 +1,4 @@
-/* eslint @typescript-eslint/camelcase: 0 */ // --> OFF
+/* eslint @typescript-eslint/camelcase: 0 */
 
 import AdvantagesSection from '../components/AdvantagesSection';
 import Profile from 'components/Profile/Profile';
