@@ -115,6 +115,15 @@ const Item = styled.div`
     margin-bottom: 40px;
     margin-left: 1.6%;
     margin-right: 1.6%;
+
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+
+    &:nth-child(4n + 1),
+    &:first-child {
+      margin-left: 0;
+    }
   }
 
   @media (min-width: 1655px) {
@@ -122,6 +131,15 @@ const Item = styled.div`
     padding: 23px;
     margin-left: 2.1%;
     margin-right: 2.1%;
+
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+
+    &:nth-child(4n + 1),
+    &:first-child {
+      margin-left: 0;
+    }
   }
 `;
 

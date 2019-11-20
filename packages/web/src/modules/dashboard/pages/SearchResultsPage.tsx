@@ -1,13 +1,15 @@
+import ItemPreloader from 'components/ItemPreloader/ItemPreloader';
 import NavBar from 'components/NavBar/NavBar';
 import Profile from 'components/Profile/Profile';
 import queryString from 'query-string';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ResultItem } from '../dashboard.models';
 import SearchField from 'components/SearchField/SearchField';
 import SearchResultsItem from 'components/SearchResultsItem/SearchResultsItem';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
 import Hamburger from 'components/Hamburger/Hamburger';
+import Logo from 'components/Logo/Logo';
 
 const SearchResultsPage = ({ location, results }: any) => {
   let urlTags = queryString.parse(location.search).tags;
@@ -20,6 +22,14 @@ const SearchResultsPage = ({ location, results }: any) => {
     }));
   }
 
+  const [listingResults, changeListingResults] = useState([]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      changeListingResults(results);
+    }, 1000);
+  }, [changeListingResults, results]);
+
   return (
     <Page>
       <NavBarContainer>
@@ -27,13 +37,18 @@ const SearchResultsPage = ({ location, results }: any) => {
       </NavBarContainer>
       <ResultsContent>
         <ResultsHeader>
-          <SearchField defaultTags={inputTags} />
-          <ProfileContainer>
-            <Profile />
-          </ProfileContainer>
+          <LogoContainer>
+            <Logo dark />
+          </LogoContainer>
           <HamburgerContainer>
             <Hamburger />
           </HamburgerContainer>
+          <SearchFieldContainer>
+            <SearchField defaultTags={inputTags} />
+          </SearchFieldContainer>
+          <ProfileContainer>
+            <Profile />
+          </ProfileContainer>
         </ResultsHeader>
         <FiltersPanel>
           <SearchCount>Search Results (21)</SearchCount>
@@ -42,9 +57,22 @@ const SearchResultsPage = ({ location, results }: any) => {
           </Filters>
         </FiltersPanel>
         <ResultsListing>
-          {results.map((item: ResultItem) => (
-            <SearchResultsItem item={item} key={item.id} />
-          ))}
+          {listingResults && listingResults.length > 0 ? (
+            listingResults.map((item: ResultItem) => (
+              <SearchResultsItem item={item} key={item.id} />
+            ))
+          ) : (
+            <>
+              <ItemPreloader />
+              <ItemPreloader />
+              <ItemPreloader />
+              <ItemPreloader />
+              <ItemPreloader />
+              <ItemPreloader />
+              <ItemPreloader />
+              <ItemPreloader />
+            </>
+          )}
         </ResultsListing>
       </ResultsContent>
     </Page>
@@ -67,8 +95,23 @@ const ProfileContainer = styled.div`
   }
 `;
 
+const SearchFieldContainer = styled.div`
+  @media (max-width: 731px) {
+    width: 100%;
+    margin-top: 20px;
+  }
+`;
+
 const HamburgerContainer = styled.div`
   margin-left: 30px;
+  display: none;
+
+  @media (max-width: 731px) {
+    display: block;
+  }
+`;
+
+const LogoContainer = styled.div`
   display: none;
 
   @media (max-width: 731px) {
@@ -102,6 +145,11 @@ const ResultsHeader = styled.div`
   align-items: center;
   padding: 15px 20px;
   box-sizing: border-box;
+
+  @media (max-width: 731px) {
+    flex-wrap: wrap;
+    align-items: center;
+  }
 `;
 
 const FiltersPanel = styled.div`

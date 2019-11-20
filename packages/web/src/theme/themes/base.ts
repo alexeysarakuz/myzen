@@ -144,6 +144,10 @@ export const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
   }
 
+.icon-checkmark:before {
+  content: "\\e909";
+}
+
 .icon-user-plus::before {
   content: "\\e907";
 }

@@ -1,8 +1,8 @@
 import Loadable from 'react-loadable';
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-
 import Preloader from 'components/Preloader/Preloader';
+import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 
 const MainPage = Loadable({
   loader: () =>
@@ -58,6 +58,14 @@ const FindWorkPage = Loadable({
   loading: () => <Preloader />,
 });
 
+const GettingStartedPage = Loadable({
+  loader: () =>
+    import(
+      './modules/dashboard/pages/GettingStartedPage' /* webpackChunkName: "GettingStartedPage" */
+    ),
+  loading: () => <Preloader />,
+});
+
 export default (
   <div>
     <Switch>
@@ -67,6 +75,11 @@ export default (
       <Route exact path="/login" component={LoginPage} />
       <Route exact path="/search" component={SearchResultsPage} />
       <Route exact path="/find-a-work" component={FindWorkPage} />
+      <PrivateRoute
+        exact
+        path="/getting-started"
+        component={GettingStartedPage}
+      />
       {/* Catch all routes */}
       <Route component={NotFoundPage} />
     </Switch>

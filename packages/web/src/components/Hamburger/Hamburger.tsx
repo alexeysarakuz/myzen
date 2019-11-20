@@ -172,7 +172,8 @@ const Menu = styled.div<{ isActive: boolean }>`
 `;
 
 const Overlay = styled.div<{ isActive: boolean }>`
-  display: none;
+  visibility: hidden;
+  opacity: 0;
 
   @media (max-width: 731px) {
     position: fixed;
@@ -182,12 +183,13 @@ const Overlay = styled.div<{ isActive: boolean }>`
     height: 100%;
     z-index: 60;
     background-color: ${props => props.theme.colors.black};
+    transition: 0.3s;
 
     ${props =>
       props.isActive &&
       `
-        display: block;
-        opacity: .5;
+      opacity: .5;
+        visibility: visible;
       `}
   }
 `;
@@ -328,6 +330,7 @@ const ListCategory = styled.div`
   color: ${props => props.theme.colors.darkGray};
   margin-top: 10px;
   margin-bottom: 10px;
+  cursor: pointer;
 
   span {
     display: inline-block;
