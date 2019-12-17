@@ -18,7 +18,7 @@ const StepsSection = ({ steps }: StepsSectionProps) => (
           architecto.
         </Paragraph>
         <Completed>
-          <span className="icon icon-checkmark"></span>
+          <span className="icon icon-checkmark" />
           Completed
         </Completed>
       </Paper>
@@ -32,11 +32,11 @@ const StepsSection = ({ steps }: StepsSectionProps) => (
         </Paragraph>
         {steps.add_payment ? (
           <Completed>
-            <span className="icon icon-checkmark"></span>
+            <span className="icon icon-checkmark" />
             Completed
           </Completed>
         ) : (
-          <Complete to="/">Add info</Complete>
+          <Complete to="/me">Set up profile page</Complete>
         )}
       </Paper>
     </StepsCol>
@@ -52,7 +52,7 @@ const StepsSection = ({ steps }: StepsSectionProps) => (
           </Paragraph>
           {steps.find_job ? (
             <Completed>
-              <span className="icon icon-checkmark"></span>
+              <span className="icon icon-checkmark" />
               Completed
             </Completed>
           ) : (
@@ -71,7 +71,7 @@ const StepsSection = ({ steps }: StepsSectionProps) => (
           </Paragraph>
           {steps.hire_freelancer ? (
             <Completed>
-              <span className="icon icon-checkmark"></span>
+              <span className="icon icon-checkmark" />
               Completed
             </Completed>
           ) : (
@@ -123,7 +123,7 @@ const StepsCol = styled.div`
   width: 28%;
   border-radius: 9px;
   background-color: ${props => props.theme.colors.white};
-  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.03);
+  box-shadow: ${props => props.theme.shadows.stepsItemShadow};
 
   ${Paragraph} {
     margin: 18px 0;
@@ -158,7 +158,7 @@ const DoubleCol = styled.div`
 
   ${Paper} {
     display: flex;
-    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.03);
+    box-shadow: ${props => props.theme.shadows.stepsItemShadow};
     text-align: left;
     padding-left: 30px;
   }

@@ -1,38 +1,63 @@
+import * as AuthActions from 'modules/auth/auth.actions';
 import { connect } from 'react-redux';
 import { getIsAuthenticated } from 'modules/auth/auth.reducer';
 import { Link } from 'react-router-dom';
+import ProfileDropdown from 'components/ProfileDropdown/ProfileDropdown';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
 interface ProfileProps {
   authorized: boolean;
+  logout: () => void;
 }
 
-const Profile = ({ authorized }: ProfileProps) => {
+const ProfileWidget = ({ authorized, logout }: ProfileProps) => {
   const [isLoad, changeLoad] = useState(false);
+  const [isOpenDropdown, changeIsOpen] = useState(false);
 
+  const toggleDropwdown = () => changeIsOpen(!isOpenDropdown);
+
+  const closeDropdown = () => changeIsOpen(false);
+
+  const loadedImage = () => changeLoad(true);
   return (
-    <div>
+    <Container>
       {authorized ? (
-        <ProfileWidget onLoad={() => changeLoad(true)} isLoad={isLoad}>
-          <Image src="https://thispersondoesnotexist.com/image" />
-        </ProfileWidget>
+        <>
+          <Widget
+            onLoad={loadedImage}
+            isLoad={isLoad}
+            onClick={toggleDropwdown}
+          >
+            <Image src="https://thispersondoesnotexist.com/image" />
+          </Widget>
+          <ProfileDropdown
+            isOpen={isOpenDropdown}
+            close={closeDropdown}
+            logout={logout}
+          />
+        </>
       ) : (
         <Row>
           <Button to="/login">Log In</Button>
           <Button to="/register">Sign Up</Button>
         </Row>
       )}
-    </div>
+    </Container>
   );
 };
 
-const ProfileWidget = styled.div<{ isLoad: boolean }>`
+const Container = styled.div`
+  position: relative;
+`;
+
+const Widget = styled.div<{ isLoad: boolean }>`
   display: flex;
   align-items: center;
   background-color: ${props => props.theme.colors.white};
   border-radius: 50%;
   overflow: hidden;
+  cursor: pointer;
 
   @keyframes animationGradient {
     0% {
@@ -107,7 +132,8 @@ const mapStateToProps = (state: any) => ({
   authorized: getIsAuthenticated(state),
 });
 
-export default connect(
-  mapStateToProps,
-  null,
-)(Profile);
+const mapDispatchToProps = {
+  logout: AuthActions.logout,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileWidget);

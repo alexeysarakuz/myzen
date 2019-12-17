@@ -18,7 +18,8 @@ const MainPage = () => (
             quidem facilis adipisc voltum vero excepturi aut.
           </Paragraph>
           <Button>
-            <StartLink to="/search">Find a freelancer</StartLink>
+            {/* <StartLink to="/search">Find a freelancer</StartLink> */}
+            <StartLink to="/search">Join our service</StartLink>
           </Button>
         </div>
         <WidgetsContainer>
@@ -113,6 +114,8 @@ const Title = styled.h2`
   @media (max-width: 340px) {
     font-size: 36px;
     max-width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 `;
 

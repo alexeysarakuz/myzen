@@ -11,8 +11,6 @@ const Container = ({ children }: ContainerProps) => {
 
 const Wrapper = styled.div`
   box-sizing: border-box;
-  padding-left: 20px;
-  padding-right: 20px;
   max-width: 1600px;
   margin: 0 auto;
 `;

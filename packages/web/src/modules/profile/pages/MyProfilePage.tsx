@@ -1,11 +1,19 @@
+import Achievements from '../components/Achievements';
+import Activity from '../components/Activity';
+import GeneralInfo from '../components/GeneralInfo';
+import Hamburger from 'components/Hamburger/Hamburger';
+import Logo from 'components/Logo/Logo';
 import NavBar from 'components/NavBar/NavBar';
 import ProfileWidget from 'components/ProfileWidget/ProfileWidget';
 import React from 'react';
 import styled from 'styled-components';
-import Hamburger from 'components/Hamburger/Hamburger';
-import Logo from 'components/Logo/Logo';
+import { User } from '../profile.models';
 
-const FindWorkPage = () => (
+interface ProfileProps {
+  user: User;
+}
+
+const MyProfilePage = ({ user }: ProfileProps) => (
   <Page>
     <NavBarContainer>
       <NavBar />
@@ -22,9 +30,30 @@ const FindWorkPage = () => (
           <ProfileWidget />
         </ProfileContainer>
       </Header>
+      <Info>
+        <Left>
+          <GeneralInfo user={user} />
+          <Achievements />
+        </Left>
+        <Right>
+          <Activity />
+        </Right>
+      </Info>
     </Content>
   </Page>
 );
+
+MyProfilePage.defaultProps = {
+  user: {
+    id: '1klasdls',
+    username: 'Alex Sarakuz',
+    email: 'ovens290375@gmail.com',
+    confirmed: false,
+    picture: '5.jpeg',
+    creditCard: null,
+    phone: null,
+  },
+};
 
 const Page = styled.div`
   background: ${props => props.theme.colors.lightGray};
@@ -89,4 +118,19 @@ const ProfileContainer = styled.div`
   }
 `;
 
-export default FindWorkPage;
+const Info = styled.div`
+  display: flex;
+  padding: 15px 20px;
+  justify-content: space-between;
+  align-items: flex-start;
+`;
+
+const Left = styled.div`
+  width: 45%;
+`;
+
+const Right = styled.div`
+  width: 53%;
+`;
+
+export default MyProfilePage;

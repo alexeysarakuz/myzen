@@ -3,6 +3,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Preloader from 'components/Preloader/Preloader';
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
+import UnauthorizedRoute from 'components/UnauthorizedRoute/UnauthorizedRoute';
 
 const MainPage = Loadable({
   loader: () =>
@@ -58,6 +59,22 @@ const FindWorkPage = Loadable({
   loading: () => <Preloader />,
 });
 
+const GeneralProfilePage = Loadable({
+  loader: () =>
+    import(
+      './modules/profile/pages/GeneralProfilePage' /* webpackChunkName: "GeneralProfilePage" */
+    ),
+  loading: () => <Preloader />,
+});
+
+const MyProfilePage = Loadable({
+  loader: () =>
+    import(
+      './modules/profile/pages/MyProfilePage' /* webpackChunkName: "MyProfilePage" */
+    ),
+  loading: () => <Preloader />,
+});
+
 const GettingStartedPage = Loadable({
   loader: () =>
     import(
@@ -71,8 +88,8 @@ export default (
     <Switch>
       <Route exact path="/" component={MainPage} />
       <Route exact path="/logout" component={LogoutPage} />
-      <Route exact path="/register" component={RegisterPage} />
-      <Route exact path="/login" component={LoginPage} />
+      <UnauthorizedRoute exact path="/register" component={RegisterPage} />
+      <UnauthorizedRoute exact path="/login" component={LoginPage} />
       <Route exact path="/search" component={SearchResultsPage} />
       <Route exact path="/find-a-work" component={FindWorkPage} />
       <PrivateRoute
@@ -80,6 +97,8 @@ export default (
         path="/getting-started"
         component={GettingStartedPage}
       />
+      <Route exact path="/profile/:profileId" component={GeneralProfilePage} />
+      <PrivateRoute exact path="/me" component={MyProfilePage} />
       {/* Catch all routes */}
       <Route component={NotFoundPage} />
     </Switch>

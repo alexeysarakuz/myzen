@@ -1,6 +1,6 @@
 import ItemPreloader from 'components/ItemPreloader/ItemPreloader';
 import NavBar from 'components/NavBar/NavBar';
-import Profile from 'components/Profile/Profile';
+import ProfileWidget from 'components/ProfileWidget/ProfileWidget';
 import queryString from 'query-string';
 import React, { useState, useEffect } from 'react';
 import { ResultItem } from '../dashboard.models';
@@ -47,7 +47,7 @@ const SearchResultsPage = ({ location, results }: any) => {
             <SearchField defaultTags={inputTags} />
           </SearchFieldContainer>
           <ProfileContainer>
-            <Profile />
+            <ProfileWidget />
           </ProfileContainer>
         </ResultsHeader>
         <FiltersPanel>

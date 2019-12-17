@@ -4,7 +4,7 @@ import { Redirect, Route } from 'react-router-dom';
 
 import { getIsAuthenticated } from 'modules/auth/auth.reducer';
 
-const PrivateRoute = ({
+const UnauthorizedRoute = ({
   component: Component,
   isAuthenticated,
   ...rest
@@ -12,12 +12,12 @@ const PrivateRoute = ({
   <Route
     {...rest}
     render={props =>
-      isAuthenticated ? <Component {...props} /> : <Redirect to="/register" />
+      isAuthenticated ? <Redirect to="/me" /> : <Component {...props} />
     }
   />
 );
 
-PrivateRoute.defaultProps = {
+UnauthorizedRoute.defaultProps = {
   isAuthenticated: false,
 };
 
@@ -25,4 +25,4 @@ const mapStateToProps = (state: any) => ({
   isAuthenticated: getIsAuthenticated(state),
 });
 
-export default connect(mapStateToProps, null)(PrivateRoute);
+export default connect(mapStateToProps, null)(UnauthorizedRoute);

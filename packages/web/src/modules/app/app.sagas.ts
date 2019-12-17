@@ -1,11 +1,12 @@
-import Loadable from 'react-loadable';
-import { REHYDRATE } from 'redux-persist';
 import { all, fork, put, select, take, takeLatest } from 'redux-saga/effects';
 
-import { LOGIN, REGISTER } from 'modules/auth/auth.actions';
+import { appAuthenticated, appBootstrap, BOOTSTRAP } from './app.actions';
 import { getIsAuthenticated } from 'modules/auth/auth.reducer';
 
-import { appAuthenticated, appBootstrap, BOOTSTRAP } from './app.actions';
+import Loadable from 'react-loadable';
+
+import { LOGIN, REGISTER } from 'modules/auth/auth.actions';
+import { REHYDRATE } from 'redux-persist';
 
 function* appBootstrapSaga() {
   yield put(appBootstrap());

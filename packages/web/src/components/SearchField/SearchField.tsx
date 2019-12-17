@@ -11,7 +11,7 @@ interface SearchFieldProps {
 
 const SearchField = ({ defaultTags }: SearchFieldProps) => {
   const [focused, changeFocus] = useState(false);
-  console.log(focused);
+  console.log(`${focused} - non commentable, cause unused, input focus status`);
   const [tags, changeTags] = useState(defaultTags);
   const [fieldValue, changeFieldValue] = useState('');
 
@@ -60,7 +60,7 @@ const SearchField = ({ defaultTags }: SearchFieldProps) => {
             <Tag key={item.title}>
               <div>{item.title}</div>
               <RemoveTagButton onClick={() => removeTag(index)}>
-                <span className="icon-close"></span>
+                <span className="icon-close" />
               </RemoveTagButton>
             </Tag>
           ))}
@@ -75,7 +75,7 @@ const SearchField = ({ defaultTags }: SearchFieldProps) => {
         />
       </FieldContent>
       <SearchButton>
-        <span className="icon-search"></span>
+        <span className="icon-search" />
       </SearchButton>
     </FieldContainer>
   );

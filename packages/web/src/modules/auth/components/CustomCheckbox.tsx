@@ -21,7 +21,7 @@ const CustomCheckbox = ({
       checked={value}
       onChange={() => onChange(!value)}
     />
-    <StyledCheckbox htmlFor={name}></StyledCheckbox>
+    <StyledCheckbox htmlFor={name} />
     <label htmlFor={name}>{placeholder}</label>
   </CheckboxWrapper>
 );
