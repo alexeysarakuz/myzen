@@ -54,6 +54,7 @@ exports.login = (req, res, next) => {
 
 exports.register = (req, res, next) => {
   const name = req.body.name;
+  const surname = req.body.surname;
   const email = req.body.email;
   const password = req.body.password;
 
@@ -70,6 +71,7 @@ exports.register = (req, res, next) => {
             const user = new Account({
               _id: new mongoose.Types.ObjectId(),
               name: name,
+              surname: surname,
               email: email,
               password: hash,
             });
@@ -80,6 +82,7 @@ exports.register = (req, res, next) => {
                   message: 'Account has been created succesfully',
                   data: {
                     name,
+                    surname,
                     email,
                   },
                 });

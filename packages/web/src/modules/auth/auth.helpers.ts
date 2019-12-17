@@ -3,17 +3,43 @@ export const validateField = (type: string, value: string) => {
   const passwordPattern = /^\w{2,20}$/g;
   const emailPattern = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/g;
   switch (type) {
-    case 'name':
-      const namePattern = /^\w{2,15}$/g;
-      if (value.length > 15) {
+    case 'username':
+      const namePattern = /^\w{2,30}$/g;
+      const words = value.split(' ');
+
+      if (words.length > 2) {
+        errors.push('Invalid format. Enter not more than 2 words');
+        break;
+      }
+
+      if (words.length < 2) {
+        errors.push('Invalid format. Enter at least 2 words');
+        break;
+      }
+
+      const name = value.split(' ')[0];
+      const surname = value.split(' ')[1];
+
+      if (name.length > 15) {
         errors.push('Name is too long. Max 15 characters');
       }
-      if (value.length < 2) {
+      if (name.length < 2) {
         errors.push('Name is too short. Min 2 characters');
       }
-      if (!value.match(namePattern)) {
+      if (!name.match(namePattern)) {
         errors.push('Name is invalid');
       }
+
+      if (surname.length > 15) {
+        errors.push('Surname is too long. Max 15 characters');
+      }
+      if (surname.length < 2) {
+        errors.push('Surname is too short. Min 2 characters');
+      }
+      if (!surname.match(namePattern)) {
+        errors.push('Surname is invalid');
+      }
+
       break;
     case 'email':
       if (value.length > 30) {

@@ -6,7 +6,7 @@ import TextField from './TextField';
 
 interface RegisterPageFormProps {
   errors: {
-    name?: string[];
+    username?: string[];
     email?: string[];
     password?: string[];
   };
@@ -25,9 +25,9 @@ const RegisterPageForm = ({ errors, onSubmit }: RegisterPageFormProps) => {
     >
       <TextField
         type="text"
-        placeholder="Name"
+        placeholder="Name &amp; Surname (2 words)"
         value={username}
-        error={errors && errors.name && errors.name[0]}
+        error={errors && errors.username && errors.username[0]}
         onChange={changeUsername}
       >
         <span className="icon-user" />

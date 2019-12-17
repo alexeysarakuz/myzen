@@ -1,7 +1,6 @@
 /* eslint @typescript-eslint/camelcase: 0 */
-
 import AdvantagesSection from '../components/AdvantagesSection';
-import Profile from 'components/Profile/Profile';
+import ProfileWidget from 'components/ProfileWidget/ProfileWidget';
 import NavBar from 'components/NavBar/NavBar';
 import React from 'react';
 import styled from 'styled-components';
@@ -29,7 +28,7 @@ const GettingStartedPage = ({ steps }: GettingStartedProps) => (
           <Hamburger />
         </HamburgerContainer>
         <ProfileContainer>
-          <Profile />
+          <ProfileWidget />
         </ProfileContainer>
       </Header>
       <SideContent>

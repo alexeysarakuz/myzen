@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Hamburger from 'components/Hamburger/Hamburger';
 import Logo from 'components/Logo/Logo';
 
-const FindWorkPage = () => (
+const GeneralProfilePage = () => (
   <Page>
     <NavBarContainer>
       <NavBar />
@@ -89,4 +89,4 @@ const ProfileContainer = styled.div`
   }
 `;
 
-export default FindWorkPage;
+export default GeneralProfilePage;

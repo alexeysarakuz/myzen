@@ -50,25 +50,25 @@ const Hamburger = ({ authorized, logout }: HamburgerProps) => {
         </ProfileData>
         <NavList>
           <li>
-            <ListLink to="/" activeClassName="active" exact>
+            <ListLink to="/getting-started" activeClassName="active" exact>
               <span className="icon icon-add-outline" />
-              <ListItem>Home</ListItem>
+              <ListItem>Getting Started</ListItem>
             </ListLink>
           </li>
           <li>
-            <ListLink to="/search">
+            <ListLink to="/search" activeClassName="active" exact>
               <span className="icon icon-user-plus" />
               <ListItem>Recruit</ListItem>
             </ListLink>
           </li>
           <li>
-            <ListLink to="/find-a-work">
+            <ListLink to="/find-a-work" activeClassName="active" exact>
               <span className="icon icon-search" />
               <ListItem>Find a work</ListItem>
             </ListLink>
           </li>
           <li>
-            <ListLink to="/about">
+            <ListLink to="/about" activeClassName="active" exact>
               <span className="icon icon-information-outline" />
               <ListItem>About</ListItem>
             </ListLink>
@@ -369,7 +369,4 @@ const mapDispatchToProps = {
   logout: AuthActions.logout,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Hamburger);
+export default connect(mapStateToProps, mapDispatchToProps)(Hamburger);

@@ -4,10 +4,6 @@ export const colorScheme = {
   white: { value: '#FFF', name: 'White' },
   black: { value: '#000', name: 'Black' },
   primaryBlue: { value: '#3D4CA5', name: 'PrimaryBlue' },
-  primaryBlueShadow: {
-    value: 'rgba(218, 223, 241, 0.6)',
-    name: 'primaryBlueShadow',
-  },
   primaryLightBlue: {
     value: 'rgba(62, 79, 161, 0.6)',
     name: 'PrimaryLightBlue',
@@ -35,6 +31,8 @@ export const colorScheme = {
   lightGrayProgress: { value: '#EAEAEA', name: 'LightGrayProgress' },
   lightGrayWidgetLoader: { value: '#E9E9E9', name: 'LightGrayWidgetLoader' },
   lightGrayWidgetsBg: { value: '#FDFDFD', name: 'LightGrayWidgetsBg' },
+  lightGrayProfileBorder: { value: '#DDDDDD', name: 'lightGrayProfileBorder' },
+  lightGrayProfileLine: { value: '#EFEDED', name: 'lightGrayProfileLine' },
   darkGray: { value: '#939393', name: 'DarkGray' },
   darkGrayTags: { value: '#7E86A4', name: 'DarkGrayTags' },
   darkGrayWidgetLoader: { value: '#C4C4C4', name: 'DarkGrayWidgetLoader' },
@@ -42,6 +40,7 @@ export const colorScheme = {
   secondaryDarkGray: { value: '#2B3641', name: 'SecondaryDarkGray' },
   darkGrayPlaceholder: { value: '#878DA6', name: 'DarkGrayPlaceholder' },
   darkGraySearchResults: { value: '#2D3742', name: 'DarkGraySearchResults' },
+  darkGrayProfile: { value: '#575757', name: 'DarkGrayProfile' },
   primaryGreen: { value: '#5EC695', name: 'PrimaryGreen' },
   greenRating: { value: '#4ADBBD', name: 'GreenRating' },
   redRating: { value: 'rgb(243, 117, 62)', name: 'RedRating' },

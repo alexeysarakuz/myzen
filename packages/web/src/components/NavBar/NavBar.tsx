@@ -11,55 +11,55 @@ interface NavBarProps {
   logout: () => void;
 }
 
-const NavBar = ({ authorized = true, logout }: NavBarProps) => (
+const NavBar = ({ authorized, logout }: NavBarProps) => (
   <Bar>
     <Logo dark />
     <NavList>
       <li>
         {authorized ? (
           <ListItem to="/getting-started" activeClassName="active" exact>
-            <span className="icon icon-add-outline"></span>
+            <span className="icon icon-add-outline" />
             <span>Getting Started</span>
           </ListItem>
         ) : (
           <ListItem to="/register" activeClassName="active" exact>
-            <span className="icon icon-add-outline"></span>
-            <span>Getting Started</span>
+            <span className="icon icon-add-outline" />
+            <span>Join</span>
           </ListItem>
         )}
       </li>
       <li>
         <ListItem to="/search" activeClassName="active">
-          <span className="icon icon-user-plus"></span>
+          <span className="icon icon-user-plus" />
           <span>Recruit</span>
         </ListItem>
       </li>
       <li>
         <ListItem to="/find-a-work" activeClassName="active">
-          <span className="icon icon-search"></span>
+          <span className="icon icon-search" />
           <span>Find a work</span>
         </ListItem>
       </li>
       <li>
         <ListItem to="/about" activeClassName="active">
-          <span className="icon icon-information-outline"></span>
-          <span>About</span>
+          <span className="icon icon-information-outline" />
+          <span>About us</span>
         </ListItem>
       </li>
     </NavList>
     <OptionsList>
       <OptionItem>
-        <span className="icon-settings"></span>
-        <div>Settings</div>
+        <span className="icon icon-settings" />
+        <span>Settings</span>
       </OptionItem>
       <OptionItem>
-        <span className="icon-help-circle"></span>
-        <div>Help</div>
+        <span className="icon icon-help-circle" />
+        <span>Help</span>
       </OptionItem>
       {authorized && (
         <OptionItem onClick={logout}>
-          <span className="icon-switch"></span>
-          <div>Log out</div>
+          <span className="icon icon-switch" />
+          <span>Log out</span>
         </OptionItem>
       )}
     </OptionsList>
@@ -123,22 +123,38 @@ const ListItem = styled(NavLink)`
 `;
 
 const OptionsList = styled.ul`
+  display: flex;
+  flex-direction: column;
   margin-top: auto;
   margin-bottom: 10px;
 `;
 
 const OptionItem = styled.li`
-  display: flex;
+  display: inline-block;
   align-items: center;
   color: ${props => props.theme.colors.darkGray};
   font-size: 15px;
-  margin-top: 25px;
-  margin-bottom: 25px;
+  margin-top: 12px;
+  margin-bottom: 12px;
   cursor: pointer;
 
   span {
+    display: inline-block;
+    vertical-align: middle;
+    transition: 0.3s;
+  }
+
+  span.icon {
     margin-right: 10px;
     font-size: 18px;
+  }
+
+  &:hover {
+    color: ${props => props.theme.colors.primaryBlue};
+
+    span.icon {
+      color: ${props => props.theme.colors.primaryBlue};
+    }
   }
 `;
 
@@ -150,7 +166,4 @@ const mapDispatchToProps = {
   logout: AuthActions.logout,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(NavBar);
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

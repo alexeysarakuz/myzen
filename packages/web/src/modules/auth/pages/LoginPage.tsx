@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { getLoginErrors } from '../auth.reducer';
 import { Link } from 'react-router-dom';
-import React from 'react';
+import React, { useEffect } from 'react';
 import RightColumn from '../components/RightColumn';
 import LoginPageForm from '../components/LoginPageForm';
 import styled from 'styled-components';
@@ -12,11 +12,21 @@ interface LoginPageProps {
   loginErrors: {
     general: string[];
   };
+  resetErrors: Function;
   setLoginErrors: Function;
   login: Function;
 }
 
-const LoginPage = ({ loginErrors, setLoginErrors, login }: LoginPageProps) => {
+const LoginPage = ({
+  loginErrors,
+  resetErrors,
+  setLoginErrors,
+  login,
+}: LoginPageProps) => {
+  useEffect(() => {
+    resetErrors();
+  }, [resetErrors]);
+
   const loginUser = (e: any, email: string, password: string) => {
     e.preventDefault();
     let allErrors = {
@@ -179,11 +189,9 @@ const mapStateToProps = (state: any) => ({
 });
 
 const mapDispatchToProps = {
+  resetErrors: AuthActions.resetErrors,
   login: AuthActions.login,
   setLoginErrors: AuthActions.setLoginErrors,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(LoginPage);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

@@ -1,9 +1,9 @@
 import Hamburger from 'components/Hamburger/Hamburger';
 import Logo from 'components/Logo/Logo';
 import { NavLink } from 'react-router-dom';
+import ProfileWidget from 'components/ProfileWidget/ProfileWidget';
 import React from 'react';
 import styled from 'styled-components';
-import Profile from 'components/Profile/Profile';
 
 const NavHeader = () => (
   <Wrapper>
@@ -30,7 +30,7 @@ const NavHeader = () => (
     </NavCol>
     <NavCol>
       <ProfileContainer>
-        <Profile />
+        <ProfileWidget />
       </ProfileContainer>
       <Hamburger />
     </NavCol>
@@ -38,11 +38,16 @@ const NavHeader = () => (
 );
 
 const Wrapper = styled.div`
+  box-sizing: border-box;
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: ${props => props.theme.colors.white};
   padding-top: 19px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: ${props => props.theme.colors.white};
+  z-index: 90;
 
   @media (max-width: 731px) {
     padding-top: 15px;
@@ -114,9 +119,6 @@ const ListLink = styled(NavLink)`
 `;
 
 const ProfileContainer = styled.div`
-  position: relative;
-  z-index: 7;
-
   @media (max-width: 731px) {
     display: none;
   }

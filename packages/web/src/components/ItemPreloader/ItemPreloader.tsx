@@ -48,7 +48,8 @@ const Item = styled.div`
   padding: 15px;
   margin-bottom: 20px;
   background-color: ${props => props.theme.colors.white};
-  box-shadow: 0 0 20px ${props => props.theme.colors.primaryBlueShadow};
+  box-shadow: ${props => props.theme.shadows.searchResultItemShadow};
+  border-radius: 3px;
 
   @media (min-width: 0) and (max-width: 580px) {
     width: 100%;
@@ -328,6 +329,7 @@ const ButtonsRow = styled.div`
 const CommunicateButton = styled.button`
   padding: 13px;
   width: 48%;
+  font-size: 12px;
   font-weight: 500;
   text-transform: uppercase;
   color: ${props => props.theme.colors.primaryBlue};

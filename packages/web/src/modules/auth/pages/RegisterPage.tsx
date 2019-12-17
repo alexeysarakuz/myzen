@@ -11,7 +11,7 @@ import { validateField } from '../auth.helpers';
 
 interface RegisterPageProps {
   registerErrors: {
-    name?: string[];
+    username?: string[];
     email?: string[];
     password?: string[];
   };
@@ -28,6 +28,7 @@ const RegisterPage = ({
   register,
 }: RegisterPageProps) => {
   const errors = registerErrors;
+
   useEffect(() => {
     resetErrors();
   }, [resetErrors]);
@@ -42,21 +43,22 @@ const RegisterPage = ({
     e.preventDefault();
 
     let allErrors = {
-      name: [''],
+      username: [''],
       email: [''],
       password: [''],
     };
-    allErrors.name = validateField('name', username);
+    allErrors.username = validateField('username', username);
     allErrors.email = validateField('email', email);
     allErrors.password = validateField('password', password);
 
     if (
-      allErrors.name.length === 0 &&
+      allErrors.username.length === 0 &&
       allErrors.email.length === 0 &&
       allErrors.password.length === 0
     ) {
       register({
-        name: username,
+        name: username.split(' ')[0],
+        surname: username.split(' ')[1],
         email,
         password,
         enableEmails: emailIsChecked,
@@ -212,7 +214,4 @@ const mapStateToProps = (state: any) => ({
   registerErrors: getRegisterErrors(state),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(RegisterPage);
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterPage);

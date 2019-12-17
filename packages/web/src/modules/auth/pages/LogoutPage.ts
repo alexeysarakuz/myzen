@@ -22,8 +22,5 @@ const mapDispatchToProps = {
 
 export default compose(
   withRouter,
-  connect(
-    null,
-    mapDispatchToProps,
-  ),
+  connect(null, mapDispatchToProps),
 )(LogoutPage);

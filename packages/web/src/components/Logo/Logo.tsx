@@ -8,23 +8,24 @@ interface LogoProps {
 
 const Logo = ({ dark = false }: LogoProps) => (
   <Logotype to="/">
-    <LogoContent dark={dark}>
-      <Strip>|</Strip>
-      <div>myzen</div>
-      <Dot>.</Dot>
-    </LogoContent>
+    <Strip>|</Strip>
+    <Title dark={dark}>myzen</Title>
+    <Dot>.</Dot>
   </Logotype>
 );
 
 const Logotype = styled(Link)`
+  display: inline-block;
   height: 30px;
   font-size: 24px;
   font-weight: 600;
+
+  div {
+    display: inline-block;
+  }
 `;
 
-const LogoContent = styled.div<{ dark: boolean }>`
-  display: flex;
-  align-items: flex-start;
+const Title = styled.div<{ dark: boolean }>`
   color: ${props => props.theme.colors.white};
   ${props => props.dark && `color: ${props.theme.colors.primaryBlue}`};
 `;
