@@ -2,11 +2,17 @@
 
 Myzen web application
 
-## Run in development mode
+## Run front-end in development mode
 
 ```sh
 $ yarn
 $ yarn web:start:dev
+```
+
+## Run API in development mode
+
+```sh
+$ yarn api:start:dev
 ```
 
 ## Run in production mode
