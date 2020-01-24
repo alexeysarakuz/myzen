@@ -1,7 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ScheduleWidget = () => (
+interface WidgetProps {
+  loaded: boolean;
+}
+
+const ScheduleWidget = ({ loaded }: WidgetProps) => (
   <WidgetContainer>
     <Title>Schedule of your activity</Title>
     <Row>
@@ -14,9 +18,9 @@ const ScheduleWidget = () => (
         <BackgroundStrip />
       </>
       <>
-        <BlueProgress />
-        <YellowProgress />
-        <PinkProgress />
+        <BlueProgress loaded={loaded} />
+        <YellowProgress loaded={loaded} />
+        <PinkProgress loaded={loaded} />
       </>
     </Row>
   </WidgetContainer>
@@ -51,13 +55,19 @@ const BackgroundStrip = styled.div`
   background-color: ${props => props.theme.colors.lightGrayProgress};
 `;
 
-const Progress = styled.div`
+const Progress = styled.div<{ loaded: boolean }>`
   border-radius: 15px;
   position: absolute;
+  width: 0;
+  transition: 0.8s 0.2s;
 `;
 
 const BlueProgress = styled(Progress)`
-  width: 97px;
+  ${props =>
+    props.loaded &&
+    `
+    width: 97px;
+  `}
   height: 17px;
   background-color: ${props => props.theme.colors.cyan};
   top: 15px;
@@ -65,7 +75,11 @@ const BlueProgress = styled(Progress)`
 `;
 
 const YellowProgress = styled(Progress)`
-  width: 130px;
+  ${props =>
+    props.loaded &&
+    `
+    width: 130px;
+  `}
   height: 17px;
   background-color: ${props => props.theme.colors.lightYellow};
   top: 37px;
@@ -73,7 +87,11 @@ const YellowProgress = styled(Progress)`
 `;
 
 const PinkProgress = styled(Progress)`
-  width: 80px;
+  ${props =>
+    props.loaded &&
+    `
+    width: 80px;
+  `}
   height: 17px;
   background-color: ${props => props.theme.colors.pink};
   top: 61px;

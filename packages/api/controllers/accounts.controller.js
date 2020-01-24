@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
 const Account = require('../models/account.model');
 const bcrypt = require('bcrypt');
+const mongoose = require('mongoose');
 
 exports.login = (req, res, next) => {
   const email = req.body.email;
@@ -29,6 +29,7 @@ exports.login = (req, res, next) => {
                 message: 'Logined successfully',
                 data: {
                   name: user[0].name,
+                  profile_picture: user[0].profile_picture,
                   email,
                 },
               });
@@ -74,6 +75,8 @@ exports.register = (req, res, next) => {
               surname: surname,
               email: email,
               password: hash,
+              token: '',
+              profile_picture: '',
             });
             user
               .save()

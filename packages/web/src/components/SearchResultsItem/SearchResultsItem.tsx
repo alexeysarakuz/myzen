@@ -7,9 +7,14 @@ const averageListingScore = 50.0;
 const SearchResultsItem = ({ item }: { item: ResultItem }) => (
   <Item>
     <UserData>
-      <Image src={item.profilePicture} />
+      {item.profile_picture ? (
+        <Image src={`/images/users/${item.profile_picture}`} />
+      ) : (
+        <div></div>
+      )}
+
       <>
-        <Name>{item.username}</Name>
+        <Name>{`${item.name} ${item.surname}`}</Name>
       </>
     </UserData>
     <Rating>
@@ -27,20 +32,20 @@ const SearchResultsItem = ({ item }: { item: ResultItem }) => (
     </Tags>
 
     <ReviewsTitle>
-      REVIEWS ABOUT <ReviewsName>{item.username}</ReviewsName>
+      REVIEWS ABOUT <ReviewsName>{`${item.name} ${item.surname}`}</ReviewsName>
     </ReviewsTitle>
     <Reviews>
       <Review>
-        <ReviewImage src={item.profilePicture} />
+        <ReviewImage src={`/images/users/${item.profile_picture}`} />
       </Review>
       <Review>
-        <ReviewImage src={item.profilePicture} />
+        <ReviewImage src={`/images/users/${item.profile_picture}`} />
       </Review>
       <Review>
-        <ReviewImage src={item.profilePicture} />
+        <ReviewImage src={`/images/users/${item.profile_picture}`} />
       </Review>
       <Review>
-        <ReviewImage src={item.profilePicture} />
+        <ReviewImage src={`/images/users/${item.profile_picture}`} />
       </Review>
     </Reviews>
 

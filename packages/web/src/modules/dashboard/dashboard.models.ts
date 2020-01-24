@@ -3,9 +3,11 @@ interface Tag {
 }
 
 export interface ResultItem {
-  id: string;
-  username: string;
-  profilePicture: string;
+  _id: string;
+  account_id: string;
+  profile_picture: string;
+  name: string;
+  surname: string;
   rating: number;
   tags: Tag[];
 }

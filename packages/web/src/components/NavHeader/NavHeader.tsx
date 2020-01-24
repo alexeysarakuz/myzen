@@ -68,7 +68,7 @@ const List = styled.ul`
   position: relative;
   z-index: 7;
   display: flex;
-  margin-left: 90px;
+  margin-left: 64px;
 
   @media (max-width: 820px) {
     margin-left: 50px;

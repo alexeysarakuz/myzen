@@ -1,5 +1,7 @@
+import { ActivitiesList, User } from '../profile.models';
 import Achievements from '../components/Achievements';
 import Activity from '../components/Activity';
+import BreadCrumbs from 'components/BreadCrumbs/BreadCrumbs';
 import GeneralInfo from '../components/GeneralInfo';
 import Hamburger from 'components/Hamburger/Hamburger';
 import Logo from 'components/Logo/Logo';
@@ -7,13 +9,13 @@ import NavBar from 'components/NavBar/NavBar';
 import ProfileWidget from 'components/ProfileWidget/ProfileWidget';
 import React from 'react';
 import styled from 'styled-components';
-import { User } from '../profile.models';
 
 interface ProfileProps {
   user: User;
+  activity: ActivitiesList;
 }
 
-const MyProfilePage = ({ user }: ProfileProps) => (
+const MyProfilePage = ({ user, activity }: ProfileProps) => (
   <Page>
     <NavBarContainer>
       <NavBar />
@@ -30,13 +32,16 @@ const MyProfilePage = ({ user }: ProfileProps) => (
           <ProfileWidget />
         </ProfileContainer>
       </Header>
+      <BreadCrumbsContainer>
+        <BreadCrumbs pageTitle="Profile" />
+      </BreadCrumbsContainer>
       <Info>
         <Left>
           <GeneralInfo user={user} />
           <Achievements />
         </Left>
         <Right>
-          <Activity />
+          <Activity activity={activity} />
         </Right>
       </Info>
     </Content>
@@ -52,6 +57,81 @@ MyProfilePage.defaultProps = {
     picture: '5.jpeg',
     creditCard: null,
     phone: null,
+  },
+  activity: {
+    worker: [
+      {
+        id: '123sdjk',
+        picture: '1.jpeg',
+        title: 'Some long activity symbols',
+        description:
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, dignissimos. Lorem ipsum dolor sit amet.',
+      },
+      {
+        id: '9dfn03',
+        picture: '2.jpeg',
+        title: 'Lorem ipsum dolor sit, amtur adipisicing elitnt, delectus!',
+        description:
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, dignissimos. Lorem ipsum dolor sit amet.',
+      },
+      {
+        id: 'fmjcubck38',
+        picture: '3.jpeg',
+        title: 'Lorem ipsum dolor sit, amet consecte elit. Nesciunt, delectus!',
+        description:
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, dignissimos. Lorem ipsum dolor sit amet.',
+      },
+    ],
+    recruter: [
+      {
+        id: '12af3sdjk',
+        picture: '5.jpeg',
+        title:
+          'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nesciunt, delectus!',
+        description:
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, dignissimos. Lorem ipsum dolor sit amet.',
+      },
+      {
+        id: '9dfasn03',
+        picture: '6.jpeg',
+        title:
+          'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nesciunt, delectus!',
+        description:
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, dignissimos. Lorem ipsum dolor sit amet.',
+      },
+      {
+        id: 'fmjc12asubck38',
+        picture: '7.jpeg',
+        title:
+          'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nesciunt, delectus!',
+        description:
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, dignissimos. Lorem ipsum dolor sit amet.',
+      },
+    ],
+    reviews: [
+      {
+        id: '1azawr',
+        picture: '0.jpeg',
+        title: 'Lorem ipsum dolor sit, amet consectetur ad!',
+        description:
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, dignissimos. Lorem ipsum dolor sit amet.',
+      },
+      {
+        id: 'asd9jd3',
+        picture: '6.jpeg',
+        title: 'Lorem ipsum dolor sit, isicing elit. Nesciunt, delectus!',
+        description:
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, dignissimos. Lorem ipsum dolor sit amet.',
+      },
+      {
+        id: 'mvd93dls',
+        picture: '4.jpeg',
+        title:
+          'Lorem ipsum dolor sit, amet ctetur adipisicing elit. Nesciunt, delectus!',
+        description:
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, dignissimos. Lorem ipsum dolor sit amet.',
+      },
+    ],
   },
 };
 
@@ -116,6 +196,10 @@ const ProfileContainer = styled.div`
   @media (max-width: 731px) {
     display: none;
   }
+`;
+
+const BreadCrumbsContainer = styled.div`
+  padding: 15px 20px;
 `;
 
 const Info = styled.div`

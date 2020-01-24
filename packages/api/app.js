@@ -6,6 +6,7 @@ const morgan = require('morgan');
 
 // All routes
 const accountsRoutes = require('./routes/accounts.routes.js');
+const freelancersInfoRoutes = require('./routes/freelancers.info.routes.js');
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/accounts', accountsRoutes);
+app.use('/freelancers', freelancersInfoRoutes);
 
 app.use((req, res, next) => {
   const error = new Error('Page was not found');

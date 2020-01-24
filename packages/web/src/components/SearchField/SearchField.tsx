@@ -7,9 +7,10 @@ interface TagItem {
 
 interface SearchFieldProps {
   defaultTags: TagItem[];
+  searchFreelancers: Function;
 }
 
-const SearchField = ({ defaultTags }: SearchFieldProps) => {
+const SearchField = ({ defaultTags, searchFreelancers }: SearchFieldProps) => {
   const [focused, changeFocus] = useState(false);
   console.log(`${focused} - non commentable, cause unused, input focus status`);
   const [tags, changeTags] = useState(defaultTags);
@@ -74,7 +75,7 @@ const SearchField = ({ defaultTags }: SearchFieldProps) => {
           onKeyDown={trackTagAdding}
         />
       </FieldContent>
-      <SearchButton>
+      <SearchButton onClick={() => searchFreelancers({ tags })}>
         <span className="icon-search" />
       </SearchButton>
     </FieldContainer>

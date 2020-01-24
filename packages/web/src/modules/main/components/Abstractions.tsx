@@ -1,13 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Abstractions = () => (
+interface AbstractionsProps {
+  loaded: boolean;
+}
+
+const Abstractions = ({ loaded }: AbstractionsProps) => (
   <>
     <AbstractBlueSquare />
     <AbstractCyanSquare />
-    <AbstractYellowSquareBottom />
-    <AbstractBlueSquareBottom />
-    <AbstractRedSquareBottom />
+    <AbstractYellowSquareBottom loaded={loaded} />
+    <AbstractBlueSquareBottom loaded={loaded} />
+    <AbstractRedSquareBottom loaded={loaded} />
   </>
 );
 
@@ -96,7 +100,7 @@ const AbstractCyanSquare = styled.div`
   }
 `;
 
-const AbstractYellowSquareBottom = styled.div`
+const AbstractYellowSquareBottom = styled.div<{ loaded: boolean }>`
   position: absolute;
   bottom: 30px;
   left: -170px;
@@ -105,7 +109,8 @@ const AbstractYellowSquareBottom = styled.div`
   border-radius: 56px;
   z-index: 7;
   background-color: ${props => props.theme.colors.lightYellow};
-  transform: rotate(15deg);
+  transform: rotate(15deg) translateX(-500px);
+  transition: 0.4s 0.5s;
 
   @media (max-width: 1300px) {
     left: -200px;
@@ -114,34 +119,54 @@ const AbstractYellowSquareBottom = styled.div`
   @media (max-width: 350px) {
     left: -220px;
   }
+
+  ${props =>
+    props.loaded &&
+    `
+    transform: rotate(15deg) translateX(0px);
+  `}
 `;
 
-const AbstractBlueSquareBottom = styled.div`
+const AbstractBlueSquareBottom = styled.div<{ loaded: boolean }>`
   position: absolute;
   bottom: -20px;
   left: 0;
   width: 90px;
   height: 90px;
-  transform: rotate(15deg);
+  transform: rotate(15deg) translateX(-500px);
   background-color: ${props => props.theme.colors.cyan};
   border-radius: 30px;
   z-index: 6;
+  transition: 0.4s 0.2s;
 
   @media (max-width: 350px) {
     left: -20px;
   }
+
+  ${props =>
+    props.loaded &&
+    `
+    transform: rotate(15deg) translateX(0px);
+  `}
 `;
 
-const AbstractRedSquareBottom = styled.div`
+const AbstractRedSquareBottom = styled.div<{ loaded: boolean }>`
   position: absolute;
   width: 40px;
   height: 40px;
   bottom: 15px;
   left: 120px;
-  transform: rotate(15deg);
+  transform: rotate(15deg) translateX(-500px);
   background-color: ${props => props.theme.colors.lightRed};
   border-radius: 10px;
   z-index: 8;
+  transition: 0.4s;
+
+  ${props =>
+    props.loaded &&
+    `
+    transform: rotate(15deg) translateX(0px);
+  `}
 `;
 
 export default Abstractions;

@@ -1,11 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const WorkingWidget = () => (
+interface WidgetsProps {
+  loaded: boolean;
+}
+
+const WorkingWidget = ({ loaded }: WidgetsProps) => (
   <WidgetContainer>
     <Image src="/images/users/0.jpeg" alt="" />
     <Title>Working on your project …</Title>
-    <Circle />
+    <Circle loaded={loaded} />
   </WidgetContainer>
 );
 
@@ -38,14 +42,29 @@ const Title = styled.h2`
   margin: 5px 0;
 `;
 
-const Circle = styled.div`
+const Circle = styled.div<{ loaded: boolean }>`
   position: relative;
   width: 60px;
   height: 60px;
-  border-radius: 50%;
-  background-color: ${props => props.theme.colors.lightYellow};
   margin: 0 auto;
   margin-top: 20px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: ${props => props.theme.colors.lightYellow};
+    transform: scale(0);
+    transition: 0.8s;
+
+    ${props =>
+      props.loaded &&
+      `
+      transform: scale(1);
+  `}
+  }
 
   &::after {
     content: '';
@@ -54,9 +73,16 @@ const Circle = styled.div`
     height: 30px;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(0);
     background-color: ${props => props.theme.colors.primaryDarkBlue};
     border-radius: 50%;
+    transition: 0.4s 0.5s;
+
+    ${props =>
+      props.loaded &&
+      `
+      transform: translate(-50%, -50%) scale(1);
+  `}
   }
 `;
 
