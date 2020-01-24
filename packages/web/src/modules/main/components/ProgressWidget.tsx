@@ -3,7 +3,11 @@ import React from 'react';
 import styled from 'styled-components';
 import TickIcon from './TickIcon';
 
-const ProgressWidget = () => (
+interface WidgetProps {
+  loaded: boolean;
+}
+
+const ProgressWidget = ({ loaded }: WidgetProps) => (
   <WidgetContainer>
     <Row>
       <ProfileImage src="/images/users/4.jpeg" />
@@ -13,8 +17,8 @@ const ProgressWidget = () => (
       <ArrowIcon />
     </ArrowToBottom>
     <Row>
-      <Step active>
-        <TickContainer>
+      <Step active loaded={loaded}>
+        <TickContainer loaded={loaded}>
           <TickIcon />
         </TickContainer>
       </Step>
@@ -66,44 +70,74 @@ const ArrowToBottom = styled.div`
   margin-bottom: 8px;
 `;
 
-const Step = styled.div<{ active?: boolean }>`
+const Step = styled.div<{ active?: boolean; loaded?: boolean }>`
   position: relative;
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background-color: ${props =>
-    props.active
-      ? props.theme.colors.lightYellow
-      : props.theme.colors.lightGrayStep};
+  background-color: ${props => props.theme.colors.lightGrayStep};
 
   ${props =>
     !props.active &&
     `
-        &::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            height: 12px;
-            width: 12px;
-            border-radius: 50%;
-            border: 1px dashed ${props.theme.colors.primaryBlue};
-        }
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 12px;
+        width: 12px;
+        border-radius: 50%;
+        border: 1px dashed ${props.theme.colors.primaryBlue};
+        transition: 0.5s;
+      }
+    `}
+
+  ${props =>
+    props.active &&
+    `
+      &::before {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: 0.6s;
+        
+        ${props.loaded &&
+          `
+          width: 48px;
+          height: 48px;
+          transform: translate(-50%, -50%);
+        `}
+        background-color: ${props.theme.colors.lightYellow};
+      }
     `}
 `;
 
-const TickContainer = styled.div`
+const TickContainer = styled.div<{ loaded: boolean }>`
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: 0.6s 0.5s;
 
   svg {
     width: 17px;
     height: 17px;
     margin-top: 3px;
   }
+
+  ${props =>
+    props.loaded &&
+    `
+    opacity: 1;
+  `}
 `;
 
 const RotateIcon = styled.div`

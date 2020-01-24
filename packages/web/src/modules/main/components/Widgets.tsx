@@ -7,26 +7,30 @@ import ProgressWidget from './ProgressWidget';
 import ScheduleWidget from './ScheduleWidget';
 import WorkingWidget from './WorkingWidget';
 
-const Widgets = () => (
+interface WidgetsProps {
+  loaded: boolean;
+}
+
+const Widgets = ({ loaded }: WidgetsProps) => (
   <>
     <Row>
       <WorkingWidgetContainer>
-        <WorkingWidget />
+        <WorkingWidget loaded={loaded} />
       </WorkingWidgetContainer>
       <DailyReportWidgetContainer>
-        <DailyReportWidget />
+        <DailyReportWidget loaded={loaded} />
       </DailyReportWidgetContainer>
     </Row>
     <ScheduleRow>
       <ScheduleWidgetContainer>
-        <ScheduleWidget />
+        <ScheduleWidget loaded={loaded} />
       </ScheduleWidgetContainer>
       <ProgressContainer>
-        <ProgressWidget />
+        <ProgressWidget loaded={loaded} />
       </ProgressContainer>
     </ScheduleRow>
     <BackgroundContainer>
-      <BackgroundWidget />
+      <BackgroundWidget loaded={loaded} />
     </BackgroundContainer>
   </>
 );

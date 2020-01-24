@@ -1,24 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const BackgroundWidget = () => (
+interface WidgetProps {
+  loaded: boolean;
+}
+
+const BackgroundWidget = ({ loaded }: WidgetProps) => (
   <WidgetContainer>
     <LeadData>
       <Title>Lead Data</Title>
       <Row>
-        <LoaderDark />
-        <LoaderLight />
+        <LoaderDark loaded={loaded} />
+        <LoaderLight loaded={loaded} />
       </Row>
       <Row>
-        <LoaderDark />
-        <LoaderLight />
+        <LoaderDark loaded={loaded} />
+        <LoaderLight loaded={loaded} />
       </Row>
     </LeadData>
     <ResultData>
       <Title>Result Data</Title>
       <Row>
-        <LoaderDark />
-        <LoaderLight />
+        <LoaderDark loaded={loaded} />
+        <LoaderLight loaded={loaded} />
       </Row>
     </ResultData>
   </WidgetContainer>
@@ -51,19 +55,39 @@ const Row = styled.div`
   align-items: stretch;
 `;
 
-const LoaderDark = styled.div`
+const LoaderDark = styled.div<{ loaded: boolean }>`
+  position: relative;
   width: 80px;
   height: 12px;
   margin-right: 10px;
   margin-top: 13px;
-  background-color: ${props => props.theme.colors.darkGrayWidgetLoader};
-  border-radius: 20px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: ${props => props.theme.colors.darkGrayWidgetLoader};
+    border-radius: 20px;
+    transition: 0.5s;
+
+    ${props =>
+      props.loaded &&
+      `
+        width: 100%;
+  `}
+  }
 `;
 
 const LoaderLight = styled(LoaderDark)`
   width: 100px;
   margin-left: 20px;
-  background-color: ${props => props.theme.colors.lightGrayWidgetLoader};
+
+  &::after {
+    background-color: ${props => props.theme.colors.lightGrayWidgetLoader};
+  }
 `;
 
 const ResultData = styled.div`

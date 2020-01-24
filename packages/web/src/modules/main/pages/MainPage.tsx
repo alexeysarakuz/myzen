@@ -1,37 +1,45 @@
 import Abstractions from '../components/Abstractions';
 import Container from 'components/Grid/Container';
 import NavHeader from 'components/NavHeader/NavHeader';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Widgets from '../components/Widgets';
 
-const MainPage = () => (
-  <Wrapper>
-    <Container>
-      <NavHeader />
-      <MainContent>
-        <div>
-          <Title>You hate routine, right?</Title>
-          <Paragraph>
-            Lorem ipsum dolor sit, amet cotetur adipisicing elit. Beatae illum
-            quidem facilis adipisc voltum vero excepturi aut.
-          </Paragraph>
-          <Button>
-            {/* <StartLink to="/search">Find a freelancer</StartLink> */}
-            <StartLink to="/search">Join our service</StartLink>
-          </Button>
-        </div>
-        <WidgetsContainer>
-          <Widgets />
-        </WidgetsContainer>
-      </MainContent>
-    </Container>
-    <AbstractContainer>
-      <Abstractions />
-    </AbstractContainer>
-  </Wrapper>
-);
+const MainPage = () => {
+  const [loaded, makeLoaded] = useState(false);
+
+  useEffect(() => {
+    makeLoaded(true);
+  }, []);
+
+  return (
+    <Wrapper>
+      <Container>
+        <NavHeader />
+        <MainContent>
+          <div>
+            <Title>You hate routine, right?</Title>
+            <Paragraph>
+              Lorem ipsum dolor sit, amet cotetur adipisicing elit. Beatae illum
+              quidem facilis adipisc voltum vero excepturi aut.
+            </Paragraph>
+            <Button>
+              {/* <StartLink to="/search">Find a freelancer</StartLink> */}
+              <StartLink to="/search">Join our service</StartLink>
+            </Button>
+          </div>
+          <WidgetsContainer>
+            <Widgets loaded={loaded} />
+          </WidgetsContainer>
+        </MainContent>
+      </Container>
+      <AbstractContainer>
+        <Abstractions loaded={loaded} />
+      </AbstractContainer>
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.div`
   position: relative;

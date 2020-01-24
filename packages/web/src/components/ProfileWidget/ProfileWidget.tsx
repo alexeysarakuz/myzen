@@ -1,6 +1,9 @@
 import * as AuthActions from 'modules/auth/auth.actions';
 import { connect } from 'react-redux';
-import { getIsAuthenticated } from 'modules/auth/auth.reducer';
+import {
+  getIsAuthenticated,
+  getProfilePicture,
+} from 'modules/auth/auth.reducer';
 import { Link } from 'react-router-dom';
 import ProfileDropdown from 'components/ProfileDropdown/ProfileDropdown';
 import React, { useState } from 'react';
@@ -8,10 +11,15 @@ import styled from 'styled-components';
 
 interface ProfileProps {
   authorized: boolean;
+  profile_picture: string;
   logout: () => void;
 }
 
-const ProfileWidget = ({ authorized, logout }: ProfileProps) => {
+const ProfileWidget = ({
+  authorized,
+  profile_picture,
+  logout,
+}: ProfileProps) => {
   const [isLoad, changeLoad] = useState(false);
   const [isOpenDropdown, changeIsOpen] = useState(false);
 
@@ -29,7 +37,7 @@ const ProfileWidget = ({ authorized, logout }: ProfileProps) => {
             isLoad={isLoad}
             onClick={toggleDropwdown}
           >
-            <Image src="https://thispersondoesnotexist.com/image" />
+            <Image src={`/images/users/${profile_picture}`} />
           </Widget>
           <ProfileDropdown
             isOpen={isOpenDropdown}
@@ -130,6 +138,7 @@ const Button = styled(Link)`
 
 const mapStateToProps = (state: any) => ({
   authorized: getIsAuthenticated(state),
+  profile_picture: getProfilePicture(state),
 });
 
 const mapDispatchToProps = {

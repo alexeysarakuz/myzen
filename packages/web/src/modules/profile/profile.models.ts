@@ -7,3 +7,16 @@ export interface User {
   creditCard: string | null;
   phone: string | null;
 }
+
+export interface ActivitiesList {
+  worker: ActivityItemModel[];
+  recruter: ActivityItemModel[];
+  reviews: ActivityItemModel[];
+}
+
+export interface ActivityItemModel {
+  id: string;
+  picture: string | null;
+  title: string;
+  description: string;
+}

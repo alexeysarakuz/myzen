@@ -1,3 +1,6 @@
+import * as RecruitActions from '../recruit.actions';
+import { connect } from 'react-redux';
+import { getFreelancers, getFreelancersQuantity } from '../recruit.reducer';
 import ItemPreloader from 'components/ItemPreloader/ItemPreloader';
 import NavBar from 'components/NavBar/NavBar';
 import ProfileWidget from 'components/ProfileWidget/ProfileWidget';
@@ -11,7 +14,13 @@ import { withRouter } from 'react-router-dom';
 import Hamburger from 'components/Hamburger/Hamburger';
 import Logo from 'components/Logo/Logo';
 
-const SearchResultsPage = ({ location, results }: any) => {
+const SearchResultsPage = ({
+  location,
+  freelancers,
+  freelancersQuantity,
+  searchFreelancers,
+  searchFreelancersOnLoad,
+}: any) => {
   let urlTags = queryString.parse(location.search).tags;
   let inputTags: any = [];
 
@@ -23,12 +32,18 @@ const SearchResultsPage = ({ location, results }: any) => {
   }
 
   const [listingResults, changeListingResults] = useState([]);
+  const [listingResultsQuantity, changeListingResultsQuantity] = useState(null);
+
+  useEffect(() => {
+    searchFreelancersOnLoad();
+  }, [searchFreelancersOnLoad]);
 
   useEffect(() => {
     setTimeout(() => {
-      changeListingResults(results);
-    }, 1000);
-  }, [changeListingResults, results]);
+      changeListingResults(freelancers);
+      changeListingResultsQuantity(freelancersQuantity);
+    }, 800);
+  }, [changeListingResults, freelancers]);
 
   return (
     <Page>
@@ -44,22 +59,27 @@ const SearchResultsPage = ({ location, results }: any) => {
             <Hamburger />
           </HamburgerContainer>
           <SearchFieldContainer>
-            <SearchField defaultTags={inputTags} />
+            <SearchField
+              defaultTags={inputTags}
+              searchFreelancers={searchFreelancers}
+            />
           </SearchFieldContainer>
           <ProfileContainer>
             <ProfileWidget />
           </ProfileContainer>
         </ResultsHeader>
         <FiltersPanel>
-          <SearchCount>Search Results (21)</SearchCount>
+          <SearchCount>
+            Search Results ({freelancersQuantity ? freelancersQuantity : '?'})
+          </SearchCount>
           <Filters>
             <Filter>Filters</Filter>
           </Filters>
         </FiltersPanel>
         <ResultsListing>
-          {listingResults && listingResults.length > 0 ? (
+          {listingResults && listingResultsQuantity !== null ? (
             listingResults.map((item: ResultItem) => (
-              <SearchResultsItem item={item} key={item.id} />
+              <SearchResultsItem item={item} key={item._id} />
             ))
           ) : (
             <>
@@ -184,145 +204,19 @@ const ResultsListing = styled.div`
   padding: 15px 20px;
 `;
 
-SearchResultsPage.defaultProps = {
-  results: [
-    {
-      id: 'asdfsfd',
-      username: 'Jeffrey Torres',
-      profilePicture: '/images/users/0.jpeg',
-      rating: 4.2,
-      tags: [
-        {
-          title: 'Clip maker',
-        },
-        {
-          title: 'Photographer',
-        },
-        {
-          title: 'Director of photography',
-        },
-      ],
-    },
-    {
-      id: 'sd',
-      username: 'Alicia Bruce',
-      profilePicture: '/images/users/1.jpeg',
-      rating: 6.2,
-      tags: [
-        {
-          title: 'Encoder',
-        },
-        {
-          title: 'PHP programmer',
-        },
-      ],
-    },
-    {
-      id: 'dfs',
-      username: 'Dolores Varney',
-      profilePicture: '/images/users/2.jpeg',
-      rating: 9.3,
-      tags: [
-        {
-          title: 'Manager',
-        },
-        {
-          title: 'Web coach',
-        },
-        {
-          title: 'Guider',
-        },
-      ],
-    },
-    {
-      id: 'ewa',
-      username: 'Antonio Biel',
-      profilePicture: '/images/users/3.jpeg',
-      rating: 8.2,
-      tags: [
-        {
-          title: 'Clip maker',
-        },
-        {
-          title: 'Photographer',
-        },
-        {
-          title: 'Director of photography',
-        },
-      ],
-    },
-    {
-      id: 'w9iio',
-      username: 'Wendell Hamil',
-      profilePicture: '/images/users/4.jpeg',
-      rating: 8.4,
-      tags: [
-        {
-          title: 'Clip maker',
-        },
-        {
-          title: 'Photographer',
-        },
-        {
-          title: 'Director of photography',
-        },
-      ],
-    },
+SearchResultsPage.defaultProps = {};
 
-    {
-      id: 'sdfjls',
-      username: 'Gregory Tibbits',
-      profilePicture: '/images/users/5.jpeg',
-      rating: 4.8,
-      tags: [
-        {
-          title: 'Clip maker',
-        },
-        {
-          title: 'Photographer',
-        },
-        {
-          title: 'Director of photography',
-        },
-      ],
-    },
+const mapStateToProps = (state: any) => ({
+  freelancers: getFreelancers(state),
+  freelancersQuantity: getFreelancersQuantity(state),
+});
 
-    {
-      id: 'pi',
-      username: 'Maria Ervin',
-      profilePicture: '/images/users/6.jpeg',
-      rating: 9.4,
-      tags: [
-        {
-          title: 'Clip maker',
-        },
-        {
-          title: 'Photographer',
-        },
-        {
-          title: 'Director of photography',
-        },
-      ],
-    },
-
-    {
-      id: 'piuopip',
-      username: 'Mary Lamphear',
-      profilePicture: '/images/users/7.jpeg',
-      rating: 3.8,
-      tags: [
-        {
-          title: 'Clip maker',
-        },
-        {
-          title: 'Photographer',
-        },
-        {
-          title: 'Director of photography',
-        },
-      ],
-    },
-  ],
+const mapDispatchToProps = {
+  searchFreelancers: RecruitActions.searchFreelancers,
+  searchFreelancersOnLoad: RecruitActions.searchFreelancersOnLoad,
 };
 
-export default withRouter(SearchResultsPage);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(withRouter(SearchResultsPage));

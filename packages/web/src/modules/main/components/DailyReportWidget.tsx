@@ -2,8 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import EnvelopeIcon from './EnvelopeIcon';
 
-const DailyReportWidget = () => (
+interface WidgetProps {
+  loaded: boolean;
+}
+
+const DailyReportWidget = ({ loaded }: WidgetProps) => (
   <WidgetContainer>
+    {loaded}
     <CircleWidget src="/images/interface-elems/circle-graph.png" alt="" />
     <Title>Daily Reports</Title>
     <EnvelopeContainer>
